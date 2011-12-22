@@ -1,4 +1,4 @@
-#! /usr/bin/awk -f 
+#! /usr/bin/awk -f
 
 # Transform XYZ file to punto format
 # http://sourceforge.net/projects/punto/
