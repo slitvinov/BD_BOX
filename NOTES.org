@@ -1,16 +1,43 @@
+* documentation							     :ATTACH:
+  :PROPERTIES:
+  :Attachments: bd2011.pdf
+  :ID:       1940a324-6253-4a91-b858-96481825cb88
+  :END:
+  http://bionano.icm.edu.pl/software/bd_box
+
+Maciej Długosz, Paweł Zieliński, Joanna Trylska, Brownian dynamics
+simulations on CPU and GPU with BD_BOX, J. Comput. Chem.,
+32:2734–2744, 2011
+http://dx.doi.org/10.1002/jcc.21847
 * compile
-#+begin_src sh
+#+begin_src sh :results silent
 ./configure
 make
 #+end_src
 
-#+results:
-
 * DNA simulations
 ** run
-[[file:examples/DNA/dna.prm::dt%201.0][dna.prm]]
+   :PROPERTIES:
+   :ID:       7ff2a811-dc7b-469e-8543-3ced71103785
+   :END:
+
+Simulation Control File
+[[file:examples/DNA/dna.prm][dna.prm]]
+
+Structure File
+[[file:examples/DNA/dna.str][dna.str]]
+
 #+begin_src screen :cmd bash :session run-dna
 cd examples/DNA/
 ../../src/bd_box --str_filename=dna.str dna.prm
 #+end_src
 ** post
+#+begin_src screen :cmd bash :session post-dna
+awk -f scripts/xyz2punto.awk examples/DNA/dna.xyz > examples/DNA/dna.punto
+#+end_src
+
+To visualize
+#+begin_example
+punto  -B 0:0:0:1000:1000:1000 dna.punto 
+#+end_example
+
