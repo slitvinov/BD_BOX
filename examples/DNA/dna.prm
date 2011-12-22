@@ -7,10 +7,10 @@ visc 0.0102
 # factor for conversion of viscosity units, default: 14.4,
 vfactor 14.4
 # the total number of simulations steps
-bdsteps 50000
-save_xyz_freq 100
-save_rst_freq 100
-save_enr_freq 100
+bdsteps 500000
+save_xyz_freq 1000
+save_rst_freq 1000
+save_enr_freq 1000
 xyz_filename dna.xyz
 dcd_filename dna.dcd
 enr_filename dna.enr
@@ -45,3 +45,5 @@ hydro cholesky
 # this keyword specifies the algorithm used to create non-bonded
 # interactions lists
 nb_list brute
+# the velocity gradient tensor
+vel_grad_tensor 0.0 1e-5 0.0 0.0 0.0 0.0 0.0 0.0 0.0
