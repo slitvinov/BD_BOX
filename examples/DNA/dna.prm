@@ -22,23 +22,15 @@ alpha_lj 4.0
 # whether to use the 1/r^6 term in the Lennard-Jones potential
 lj_6_term yes
 # whether electrostatic interactions should be evaluated
-elec yes
-# unit conversion factor in the Equation 6, default 331.842
-gamma_c 331.842
-# the inverse of the Debye screening length, the \kappa parameter in Equation 6
-kappa_c 0.1039
+elec no
 # the number of attempts of repeating a particular simulation step
 move_attempts 10000000
 # the cutoff radius for Lennard-Jones interactions, default:
 # 0.0. Setting the cutoff lj to -1 results in cutoff defined for each
 # pair of the subunits as 2^{1/6}(Ri + Rj)
 cutoff_lj -1
-# the cutoff radius for electrostatic interactions
-cutoff_c 250.0
 # the scaling factor for Lennard-Jones interactions between bonded
 bond_lj_scale 1.0
-# the scaling factor for electrostatic interactions between bonded
-bond_c_scale 0.0
 # whether to check for overlaps in the studied system after each simulations step
 check_overlap no
 # bc string - boundary conditions to be used, either none, periodic or sphere, default: none
@@ -50,8 +42,6 @@ rand_seed 7239847
 # none (a diagonal form of the diffusion tensor will be used
 # throughout the simulation)
 hydro cholesky
-# the dielectric constant of the immersing medium
-epsilon_c 78.54
 # this keyword specifies the algorithm used to create non-bonded
 # interactions lists
 nb_list brute
