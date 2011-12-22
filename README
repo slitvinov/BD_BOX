@@ -1,0 +1,145 @@
+# bash examples
+
+####################################
+#  Configuration examples, CPU     #
+####################################
+
+# default configuration
+./configure --prefix=$HOME/bd_box
+
+# default configuration with an alternate compiler (Intel icc)
+./configure CC=icc
+
+# configuration with an aggressive optimization and loops unrolling
+# for the specified target architecture (64bit mode, gcc)
+./configure CC=gcc CFLAGS="-O3 -funroll-loops -march=core2 -m64"
+
+# enabling SSE for nonbonded interactions lists
+./configure CC=gcc CFLAGS="-O3 -funroll-loops" --enable-sse
+
+# enabling SSE for nonbonded interactions lists, single precision
+./configure CC=gcc CFLAGS="-O3 -funroll-loops" --enable-sse --enable-float
+
+################################################################
+# LAPACK configuration examples                                #
+################################################################
+# system lapack
+./configure --with-lapack="-llapack"
+
+# ATLAS: export ATLAS_DIR=$HOME/ATLAS
+# command:        ls $ATLAS_DIR
+# should give:    include  lib
+# command:        ls $ATLAS_DIR/lib
+# should give:    libatlas.a  libcblas.a  libf77blas.a  liblapack.a  libptcblas.a  libptf77blas.a
+export ATLAS_DIR=$HOME/ATLAS
+./configure --with-lapack="-L $ATLAS_DIR/lib -llapack -lcblas -lf77blas -latlas -lgfortran"
+
+# acml 
+# command: ls /opt/acml/acml4.2.0/gfortran64/
+# should give: libacml.a  libacml.so  libacml_mv.a  libacml_mv.so
+export ACML_DIR=/opt/acml/acml4.2.0/gfortran64/
+./configure --with-lapack="-L $ACML_DIR/lib -lacml -lacml_mv -lgfortran"
+
+# to use single precision add --enable-float
+
+#Intel MKL 10.3  version (for other version use MKL Advisory) and icc compiler
+export INTELLIB_DIR=/opt/intel/mkl/lib/intel64
+export CC=/opt/intel/bin/icc
+export CXX=/opt/intel/bin/icpc
+./configure --with-lapack="-L${INTELLIB_DIR} -Wl,--start-group \
+-lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -Wl,--end-group -openmp -lpthread"
+
+########################################################
+# exmaple of configuration for ScaLAPACK #
+########################################################
+
+# Using ScaLAPACK with own static version of ATLAS
+# ATLAS_DIR directory containing ATLAS
+# SCALAPACK_DIR directory containing SCALAPACK AND BLACS
+# for example export SCALAPACK_DIR=$HOME/ScaLAPACK
+# command:        ls $SCALAPACK_DIR
+# should give:    libblacs.a  libblacsCinit.a  libblacsF77init.a  libscalapack.a
+# for example export export ATLAS_DIR=$HOME/ATLAS
+# command:        ls $ATLAS_DIR
+# should give:    include  lib
+# command:        ls $ATLAS_DIR/lib
+# should give:    libatlas.a  libcblas.a  libf77blas.a  liblapack.a  libptcblas.a  libptf77blas.a
+
+./configure CC=mpicc CFLAGS="-O3" --enable-mpi \
+--with-scalapack="-L $SCALAPACK_DIR -lscalapack -lblacsCinit -lblacs -L $ATLAS_DIR/lib -llapack -lcblas -lf77blas -latlas -lgfortran"
+
+# Using ScaLAPACK with system LAPACK
+./configure CC=mpicc CFLAGS="-O3" --enable-mpi --with-scalapack="-L $SCALAPACK_DIR -lscalapack -lblacsCinit -lblacs -llapack"
+
+# Using ScaLAPACK with system LAPACK and ScaLAPACK
+./configure CC=mpicc CFLAGS="-O3" --enable-mpi --with-scalapack="-lscalapack-openmpi -llapack"
+
+# Run mpi version, with box.prm configuration file
+mpiexec -n 4 ./bd_box box.prm --MPI_block=64 --MPI_nprow=2  --MPI_npcol=2
+
+# it's necessary to compile with --enable-mpi
+# bd_box compiled with --enable-mpi but without --with-scalapack, will not perform the Cholesky decomposition
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+######################################################
+# Configuration, GPU using MAGMA and MKL             #
+######################################################
+
+# download and install MKL
+# download and compile MAGMA with MKL
+
+# directory containing libmagma.a  libmagmablas.a
+export MAGMALIB_DIR=~/magma/lib
+# directory containing cuda toolkit (bin, ..., src )
+export CUDA_DIR=~/cuda
+# directory containing cudpp.h  libcudpp.a
+export CUDPP_DIR=~/cudpp
+# here we're assuming that MKL is configured and all paths are set, you can use MKL advisory for more information
+source ~/intel/bin/compilervars.sh intel64
+./configure --with-magma="-L${MAGMALIB_DIR} -lmagma -lmagmablas" \
+-with-lapack="-lmkl_intel_lp64 -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -liomp5 -lm -lpthread" \
+--with-cuda="${CUDA_DIR}" --enable-float CFLAGS="-O3" \
+NVCCFLAGS="-O3 -arch=sm_11" --with-cudpp="${CUDPP_DIR}";
+
+# for the current version of BD_BOX --enable-float is essential
+# change -arch=sm_11 to -arch=sm20 for Fermi
+# change -arch=sm_11 to -arch=sm13 for GTX 200 series
+# -arch=sm_11 is ok for GTS250
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+###############
+# Compilation #
+###############
+
+make
+make install
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+################
+#  MS Windows  #
+################
+
+Install Windows SDK 7.0 - version 7.1 doesn't work with cuda toolkit 3.2 and doesn't contain OpenMP.
+
+Create directory C:\Program Files\Microsoft Visual Studio 9.0\Common7\Tools
+Copy vcvars32.bat there, from C:\Program Files\Microsoft Visual Studio 9.0\VC\bin.
+Rename vcvars32.bat to vsvars32.bat; only if does not already exist.
+CUDA Toolkit requires that file.
+
+Run "Windows SDK 7.0 Command Prompt" from
+Start->All programs->Microsoft Windows SDK->Windows SDK 7.0 Command Prompt
+
+Run SetEnv for platform
+example SetEnv /xp
+
+Go to bd_box\src directory.
+
+Run nmake -f bd_box.mak
+example: nmake -f bd_box.mak nodebug=1 openmp=1 CPU=AMD64
+example: nmake -f bd_box_gpu.mak nodebug=1 openmp=1 CPU=AMD64
+
+or use VS and bd_box.sln and bd_box_gpu.sln.
+

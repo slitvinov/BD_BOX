@@ -1,0 +1,5 @@
+Charged dumbbells (dipoles) in the external (rotate) electric field
+-------------------------------------------------------------------
+- Ewald
+- Cholesky decomposition
+- CUDA setup

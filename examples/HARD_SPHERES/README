@@ -1,0 +1,5 @@
+Model system (monodisperse) of hard spherical particles
+--------------------------------------------------------
+there are no interactions between particles
+overlaps are removed using the elastic collisions method
+periodic boundary conditions and the Ewald summation are used

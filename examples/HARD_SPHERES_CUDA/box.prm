@@ -1,0 +1,32 @@
+dt 10.0
+T 298.15
+visc 0.01
+vfactor 14.4
+bdsteps 1000
+save_dcd_freq 10
+save_rst_freq 100
+save_enr_freq 10
+rst_filename box.rst
+dcd_filename box.dcd
+enr_filename box.enr
+str_filename box.str
+out_filename box.out
+pqr_filename box.pqr
+alpha_lj 0.0
+elec no
+check_overlap yes
+bc periodic
+xbox 1050
+ybox 1050
+zbox 1050
+ewald_recip 3
+ewald_real 3
+ewald_method smith
+algorithm ermak_newton
+rand_seed 7239847
+hydro cholesky
+e_collision 1
+cuda_devices 1 0
+cuda_block 64
+
+

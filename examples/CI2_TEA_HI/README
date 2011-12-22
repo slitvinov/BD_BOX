@@ -1,0 +1,5 @@
+Model of the chymotrypsin inhibitor 2 protein
+----------------------------------------------
+- elastic network model with 15A cutoff for CA-CA bonds
+- HI based on the TEA-HI approach
+
