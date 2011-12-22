@@ -1,0 +1,16 @@
+* compile
+#+begin_src sh
+./configure
+make
+#+end_src
+
+#+results:
+
+* DNA simulations
+** run
+[[file:examples/DNA/dna.prm::dt%201.0][dna.prm]]
+#+begin_src screen :cmd bash :session run-dna
+cd examples/DNA/
+../../src/bd_box --str_filename=dna.str dna.prm
+#+end_src
+** post
