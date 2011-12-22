@@ -3,10 +3,10 @@ T 298.15
 visc 0.0102
 vfactor 14.4
 bdsteps 50000
-save_dcd_freq 100
+save_xyz_freq 100
 save_rst_freq 100
 save_enr_freq 100
-rst_filename dna.rst
+xyz_filename dna.xyz
 dcd_filename dna.dcd
 enr_filename dna.enr
 str_filename dna.str
