@@ -16,6 +16,23 @@ make
 #+end_src
 
 * DNA simulations
+** parameters
+   Macromol. Theory Simul. 2011, 20, 466–471
+   [[DOI:10.1002/mats.201100020]]
+
+   We use the finite extensible non-linear (FENE)
+   \begin{equation}
+   U(r) = - (H/2) r_0^2 \ln(1-(r/r_0)^2)
+   \end{equation}
+   with $Hr^2/k_bT = 123$
+
+   To solve HI we used the Rotne–Prager–Yamakawa expression for the
+   mobility matrix with hydrodynamic radius $a=r_0/3$.
+
+   Chains in good solvent (EV-chains) are modelled by a purely
+   repulsive Lennard–Jones potential between monomers of diameter
+   $\sigma$, energy $k_b T$ and cutoff distance $2^{1/6}\sigma$. We
+   used $r_0=1.5\sigma$
 ** run
    :PROPERTIES:
    :ID:       7ff2a811-dc7b-469e-8543-3ced71103785
