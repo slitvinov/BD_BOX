@@ -1,5 +1,5 @@
 # the time step, in [ps]
-dt 1.0
+dt 10.0
 # temperature [K]
 T 298.15
 # viscosity [Poise]
