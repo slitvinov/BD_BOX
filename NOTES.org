@@ -72,7 +72,7 @@ awk -v N=${N} -f scripts/polygen.awk > examples/DNA/dna.str.${N}
 #+end_src
 ** post
 #+begin_src screen :cmd bash :session post-dna
-awk -f scripts/xyz2punto.awk examples/DNA/dna.xyz > examples/DNA/dna.punto
+awk -v cm=1 -f scripts/xyz2punto.awk examples/DNA/dna.xyz > examples/DNA/dna.punto
 #+end_src
 
 To visualize
