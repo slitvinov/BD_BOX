@@ -59,8 +59,8 @@ cd examples/DNA/
 
 #+begin_src screen :cmd bash :session run-with-N
 N=30
-cd examples/DNA
 awk -v N=${N} -f scripts/polygen.awk > examples/DNA/dna.str.${N}
+cd examples/DNA
 ../../src/bd_box  dna.prm \
 --vel_grad_tensor="0.0 1e-4 0.0 0.0 0.0 0.0 0.0 0.0 0.0" \
 --xyz_filename=dna.xyz.${N} \
