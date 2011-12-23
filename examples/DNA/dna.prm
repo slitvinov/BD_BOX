@@ -7,7 +7,7 @@ visc 0.0102
 # factor for conversion of viscosity units, default: 14.4,
 vfactor 14.4
 # the total number of simulations steps
-bdsteps 500000
+bdsteps 50000000
 save_xyz_freq 1000
 save_rst_freq 1000
 save_enr_freq 1000

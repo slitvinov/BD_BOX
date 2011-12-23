@@ -11,6 +11,7 @@ simulations on CPU and GPU with BD_BOX, J. Comput. Chem.,
 http://dx.doi.org/10.1002/jcc.21847
 * compile
 #+begin_src sh :results silent
+# ./configure CC=icc CFLAGS=-O3 --with-cuda=no
 ./configure
 make
 #+end_src
@@ -72,7 +73,10 @@ cd examples/DNA
 #+end_src
 ** post
 #+begin_src screen :cmd bash :session post-dna
-awk -v cm=1 -f scripts/xyz2punto.awk examples/DNA/dna.xyz > examples/DNA/dna.punto
+N=30
+awk -v cm=1 -v fr=1 -f scripts/xyz2punto.awk examples/DNA/dna.xyz.${N} > examples/DNA/dna.fr.${N}
+awk -f scripts/autocorr.awk examples/DNA/dna.fr.${N} > examples/DNA/dna.fr-corr.${N}
+awk -v cm=1 -f scripts/xyz2punto.awk examples/DNA/dna.xyz.${N} > examples/DNA/dna.punto.${N}
 #+end_src
 
 To visualize
