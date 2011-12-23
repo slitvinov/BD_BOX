@@ -4,7 +4,32 @@
 # http://sourceforge.net/projects/punto/
 # http://en.wikipedia.org/wiki/XYZ_file_format
 
+# get centro of the mass (xc, yc, zc)
+function get_cm(                i) {
+    xc=yc=zc=0
+    for (i=1; i<ib+1; i++) {
+	xc+=x[i]
+	yc+=y[i]
+	zc+=z[i]
+    }
+    xc/=ib
+    yc/=ib
+    zc/=ib
+}
+
+function move_cm(               i) {
+    for (i=1; i<ib+1; i++) {
+	x[i]= x[i] - xc
+	y[i]= y[i] - yc
+	z[i]= z[i] - zc
+    }
+}
+
 function print_snap(            i) {
+    if (cm==1) {
+	get_cm()
+	move_cm()
+    }
     for (i=1; i<ib+1; i++) {
 	if (i==1) {
 	    print x[i], y[i], z[i], col_head
