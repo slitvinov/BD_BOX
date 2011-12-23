@@ -11,7 +11,7 @@ BEGIN {
     # the central charge
     Q=0.0
     # the hard-core (Lennard-Jones) radius (note that the value of R
-    # should be doubled in the structure file)
+    # should be doubled in the structure file, 2R)
     R=24.5
     # Lennard-Jones well depth
     eps=1.7766
@@ -19,9 +19,9 @@ BEGIN {
     mass=1
 
     # the equilibrium bond length
-    r0=24.5
+    r0=0.0
     # the maximum bond length
-    rmax=2.5e+07
+    rmax=18.375
     # the force constan
     H=0.0986589
 

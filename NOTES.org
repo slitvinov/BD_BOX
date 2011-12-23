@@ -33,6 +33,11 @@ make
    repulsive Lennard–Jones potential between monomers of diameter
    $\sigma$, energy $k_b T$ and cutoff distance $2^{1/6}\sigma$. We
    used $r_0=1.5\sigma$
+
+- [X] purely repulsive Lennard–Jones
+- [ ] check FENE
+- [ ] Rotne–Prager–Yamakawa for HI
+
 ** run
    :PROPERTIES:
    :ID:       7ff2a811-dc7b-469e-8543-3ced71103785
@@ -43,6 +48,9 @@ Simulation Control File
 
 Structure File
 [[file:examples/DNA/dna.str][dna.str]]
+#+begin_src sh :results silent
+awk -f scripts/polygen.awk > examples/DNA/dna.str
+#+end_src
 
 #+begin_src screen :cmd bash :session run-dna
 cd examples/DNA/
