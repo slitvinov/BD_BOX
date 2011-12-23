@@ -17,6 +17,7 @@ function get_cm(                i) {
     zc/=ib
 }
 
+# shift the center of mass
 function move_cm(               i) {
     for (i=1; i<ib+1; i++) {
 	x[i]= x[i] - xc
@@ -25,21 +26,38 @@ function move_cm(               i) {
     }
 }
 
-function print_snap(            i) {
-    if (cm==1) {
-	get_cm()
-	move_cm()
-    }
+# get the first Rouse vector
+function get_fr(                i,N,pi,fcos) {
+    N=ib
+    xr=yr=zr
+    pi=3.141592653589793
     for (i=1; i<ib+1; i++) {
-	if (i==1) {
-	    print x[i], y[i], z[i], col_head
-	} else if (i==ib) {
-	    print x[i], y[i], z[i], col_tail
-	} else {
-	    print x[i], y[i], z[i], col_rest
-	}
+	fcos= cos (pi* (2*i+1) / (2*N) )
+	xr+= x[i] * fcos
+	yr+= y[i] * fcos
+	zr+= z[i] * fcos
     }
+    xr/=N
+    yr/=N
+    zr/=N
 }
+
+function print_snap(            i) {
+    if (fr==1) {
+	print xr, yr, zr
+    } else {
+	for (i=1; i<ib+1; i++) {
+	    if (i==1) {
+		print x[i], y[i], z[i], col_head
+	    } else if (i==ib) {
+		print x[i], y[i], z[i], col_tail
+	    } else {
+		print x[i], y[i], z[i], col_rest
+	    }
+	}
+	printf("\n")	
+    }
+} 
 
 BEGIN {
     next_is_comment=0
@@ -59,8 +77,14 @@ NF==1{
     # <number of atoms> line
     next_is_comment=1
     if (NR>1) {
+	if (cm==1) {
+	    get_cm()
+	    move_cm()
+	}
+	if (fr==1) {
+	    get_fr()
+	}
 	print_snap()
-	printf("\n")
     }
     ib=0
     next
