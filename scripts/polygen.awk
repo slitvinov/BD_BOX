@@ -21,7 +21,7 @@ BEGIN {
     # the equilibrium bond length
     r0=0.0
     # the maximum bond length
-    rmax=18.375
+    rmax=36.75
     # the force constan
     H=0.0986589
 
