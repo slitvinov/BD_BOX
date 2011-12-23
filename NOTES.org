@@ -54,7 +54,21 @@ awk -f scripts/polygen.awk > examples/DNA/dna.str
 
 #+begin_src screen :cmd bash :session run-dna
 cd examples/DNA/
-../../src/bd_box --str_filename=dna.str dna.prm
+../../src/bd_box  dna.prm --vel_grad_tensor="0.0 1e-4 0.0 0.0 0.0 0.0 0.0 0.0 0.0"
+#+end_src
+
+#+begin_src screen :cmd bash :session run-with-N
+N=30
+cd examples/DNA
+awk -v N=${N} -f scripts/polygen.awk > examples/DNA/dna.str.${N}
+../../src/bd_box  dna.prm \
+--vel_grad_tensor="0.0 1e-4 0.0 0.0 0.0 0.0 0.0 0.0 0.0" \
+--xyz_filename=dna.xyz.${N} \
+--dcd_filename=dna.dcd.${N} \
+--enr_filename=dna.enr.${N} \
+--str_filename=dna.str.${N} \
+--out_filename=dna.out.${N} \
+--pqr_filename=dna.pqr.${N}
 #+end_src
 ** post
 #+begin_src screen :cmd bash :session post-dna
