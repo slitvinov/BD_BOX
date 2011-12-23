@@ -48,4 +48,5 @@ hydro cholesky
 # interactions lists
 nb_list brute
 # the velocity gradient tensor
-vel_grad_tensor 0.0 1e-5 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#vel_grad_tensor 0.0 1e-5 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+vel_grad_tensor 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
