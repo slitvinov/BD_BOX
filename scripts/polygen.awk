@@ -3,7 +3,9 @@
 BEGIN {
 # polymer
     # the number of beads
-    N=60
+    if (length(N)==0) {
+	N=60
+    }
     # distance between neghiboring beads
     dy=25
     # the hydrodynamic radius of the subunit
