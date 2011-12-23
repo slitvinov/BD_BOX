@@ -4,8 +4,24 @@
 # http://sourceforge.net/projects/punto/
 # http://en.wikipedia.org/wiki/XYZ_file_format
 
+function print_snap(            i) {
+    for (i=1; i<ib+1; i++) {
+	if (i==1) {
+	    print x[i], y[i], z[i], col_head
+	} else if (i==ib) {
+	    print x[i], y[i], z[i], col_tail
+	} else {
+	    print x[i], y[i], z[i], col_rest
+	}
+    }
+}
+
 BEGIN {
     next_is_comment=0
+    ib=0
+    col_head=749
+    col_tail=10
+    col_rest=2
 }
 
 next_is_comment{
@@ -18,16 +34,17 @@ NF==1{
     # <number of atoms> line
     next_is_comment=1
     if (NR>1) {
+	print_snap()
 	printf("\n")
     }
+    ib=0
     next
 }
 
 {
+    ib++
     # a line with data
-    # we remove tag and printf the reset
-    x=$2
-    y=$3
-    z=$4
-    print x, y, z
+    x[ib]=$2
+    y[ib]=$3
+    z[ib]=$4
 }
