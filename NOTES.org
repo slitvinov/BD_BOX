@@ -102,3 +102,21 @@ awk -v cm=1 -v fr=1 -f scripts/xyz2punto.awk examples/DNA_BSPHERE/dna_bsphere.xy
 awk -f scripts/autocorr.awk examples/DNA_BSPHERE/dna_bsphere.fr > examples/DNA_BSPHERE/dna_bsphere.fr-corr
 awk -v cm=1 -f scripts/xyz2punto.awk examples/DNA_BSPHERE/dna_bsphere.xyz > examples/DNA_BSPHERE/dna_bsphere.punto
 #+end_src
+
+* DNA in DNA_PWELL
+#+begin_src screen :cmd bash :session run-dna-bs
+cd examples/DNA_PWELL
+../../src/bd_box  dna_pwell.prm \
+--xyz_filename=dna_pwell.xyz \
+--dcd_filename=dna_pwell.dcd \
+--enr_filename=dna_pwell.enr \
+--str_filename=dna_pwell.str \
+--out_filename=dna_pwell.out \
+--pqr_filename=dna_pwell.pqr
+#+end_src
+
+#+begin_src screen :cmd bash :session post-dna-bs
+awk -v cm=1 -v fr=1 -f scripts/xyz2punto.awk examples/DNA_PWELL/dna_pwell.xyz > examples/DNA_PWELL/dna_pwell.fr
+awk -f scripts/autocorr.awk examples/DNA_PWELL/dna_pwell.fr > examples/DNA_PWELL/dna_pwell.fr-corr
+awk -v cm=1 -f scripts/xyz2punto.awk examples/DNA_PWELL/dna_pwell.xyz > examples/DNA_PWELL/dna_pwell.punto
+#+end_src
