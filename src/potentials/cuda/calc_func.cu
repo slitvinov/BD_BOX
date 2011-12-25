@@ -1595,7 +1595,7 @@ INT compute_forces( DOUBLE* _E, DOUBLE curr_time )
 {
     INT rep = 0;
 
-    if( d_bforces || bc == BC_SPHERE )
+    if( d_bforces || bc == BC_SPHERE || bc == BC_PWELL)
     {
         cudaMemcpy( coord, d_coord, sizeof(float)*size*DIMS1, cudaMemcpyDeviceToHost ); CCERR
         init_iter_forces( _E );

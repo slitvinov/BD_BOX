@@ -53,6 +53,13 @@ MAKE_STR_DEC(DOUBLE,sphere_radius)
     \sa iscorrect */
 #define BC_SPHERE 2
 
+/*! Potential well.
+    \sa bs
+    \sa sphere_radius
+    \sa iscorrect */
+#define BC_PWELL 3
+
+
 /*! String value in prm or argmunent line option indicate 'none' bs. */
 #define BC_NONE_STR "none"
 
@@ -61,6 +68,9 @@ MAKE_STR_DEC(DOUBLE,sphere_radius)
 
 /*! String value in prm or argmunent line option indicate 'sphere' bs. */
 #define BC_SPHERE_STR "sphere"
+
+/*! String value in prm or argmunent line option indicate 'sphere' bs. */
+#define BC_PWELL_STR "pwell"
 
 /*! Center coordinations in box. */
 void center_coords();

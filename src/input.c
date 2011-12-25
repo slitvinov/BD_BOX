@@ -792,6 +792,7 @@ void print_type( struct variable* in )
             case BC_NONE:   printf(BC_NONE_STR); break;
             case BC_BOX:    printf(BC_BOX_STR); break;
             case BC_SPHERE: printf(BC_SPHERE_STR); break;
+            case BC_PWELL: printf(BC_PWELL_STR); break;
             default: UNERR("Unknow NONE_CUBIC_SPHERE");
         }
     }
@@ -879,7 +880,8 @@ int check_type( CSTR type, STR value )
     {
         int tmp = strcmp( value, BC_NONE_STR ) == 0 ||
                   strcmp( value, BC_BOX_STR ) == 0 ||
-                  strcmp( value, BC_SPHERE_STR ) == 0;
+                  strcmp( value, BC_SPHERE_STR ) == 0 ||
+	          strcmp( value, BC_PWELL_STR ) == 0;
         return tmp;
     }
     else if( strcmp( type, TO_STR(BUCKET_NONE_SPATIAL) ) == 0 )
@@ -1087,6 +1089,10 @@ void apply_value( struct variable* in, STR value )
         else if( strcmp( value, BC_SPHERE_STR ) == 0  )
         {
             *val = BC_SPHERE;
+        }
+        else if( strcmp( value, BC_PWELL_STR ) == 0  )
+        {
+            *val = BC_PWELL;
         }
         else
         {

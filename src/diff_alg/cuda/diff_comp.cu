@@ -226,6 +226,7 @@ DOUBLE comp_step_ermak_newton( DOUBLE* _E )
                 load_coord();
                 load_forces();
                 if( bc != BC_SPHERE ) warning("Revert move in none sphere case",__FILE__,__LINE__);
+                if( bc != BC_PWELL ) warning("Revert move in none pwell case",__FILE__,__LINE__);
             }
         }
         else

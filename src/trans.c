@@ -64,7 +64,7 @@ void center_coords()
     g[0] /= size;
     g[1] /= size;
     g[2] /= size;
-    if( bc == BC_BOX || bc == BC_SPHERE )
+    if( bc == BC_BOX || bc == BC_SPHERE || bc == BC_PWELL)
     {
         begin[0] = begin[1] = begin[2] = 0;
     }
@@ -142,5 +142,6 @@ INT iscorrect()
             }
         }
     }
+
     return 1;
 }

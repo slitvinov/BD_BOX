@@ -163,7 +163,7 @@ INT bonded_inter( DOUBLE* _E, INT tid, DOUBLE curr_time )
 #endif
         for ( i = g_id; i < size; i += g_numprocs )
         {
-            rep |= pwellg_ext( coord + i * DIMS1, F[tid] + DIMS0*i );
+            rep |= pwell_ext( coord + i * DIMS1, F[tid] + DIMS0*i );
         }
     }
     return rep;

@@ -21,53 +21,38 @@
  *                                                                        *
  **************************************************************************/
 
-#include "pwell.h"
+#ifndef PWELL_H
+#define	PWELL_H
 
-#include "../trans.h"
-#include "../math_help.h"
+#include "../data.h"
 
-#define EPSILON 0.000001
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
-MAKE_STR_IN(YESNO,  pwell,   0, "yes/no - switch the bounding sphere field on/off")
-MAKE_STR_IN(DOUBLE, pwell_A, 1, "the magnitude of the bounding sphere force")
-MAKE_STR_IN(INT,    pwell_n, 2, "the power of the radial distance dependence of the bounding sphere force")
-MAKE_STR_IN(DOUBLE, pwell_cutoff, 0, "the bounding sphere force is applied outside this cutoff radius" )
+/*! Switch on/off whether the bounding sphere force should be used. */
+extern YESNO pwell;
+MAKE_STR_DEC(YESNO,pwell)
 
-INT pwell_ext( DOUBLE* coord, DOUBLE* F )
-{
-    DOUBLE r = norm3v( coord );
-    if ( r >= pwell_cutoff )
-    {
-        DOUBLE R = sphere_radius - r;
-        if( R >= EPSILON )
-        {
-            DOUBLE e[3];
-            DOUBLE inr = 1.0f / r;
-            DOUBLE inR = 1.0f / R;
-            INT i;
-            for ( i = 1; i <= pwell_n; i*=2 )
-            {
-                if ( pwell_n & i )
-                    inr *= inR;
-                inR *= inR;
-            }
-            e[0] = pwell_A * coord[0] * inr;
-            e[1] = pwell_A * coord[1] * inr;
-            e[2] = pwell_A * coord[2] * inr;
+/*! The amplitude of the bounding sphere force. */
+extern DOUBLE pwell_A;
+MAKE_STR_DEC(DOUBLE,pwell_A)
 
-            F[0] -= e[0];
-            F[1] -= e[1];
-            F[2] -= e[2];
-            
-            return 0;
-        }
-        else
-        {
-            return 1;
-        }
-    }
-    else
-    {
-        return 0;
-    }
+/*! The bounding sphere force, n value. */
+extern INT pwell_n;
+MAKE_STR_DEC(INT,pwell_n)
+
+/*! The bounding sphere force, cutoff. */
+extern DOUBLE pwell_cutoff;
+MAKE_STR_DEC(DOUBLE, pwell_cutoff)
+
+/*! Compute sphere boundary forces values.
+ *  \param coord coordinate array of bead
+ *  \param F [out] forces value */
+INT pwell_ext( DOUBLE* coord, DOUBLE* F );
+
+#ifdef	__cplusplus
 }
+#endif
+
+#endif	/* PWELL_H */
