@@ -39,6 +39,7 @@
 #include "electro_ext.h"
 #include "LJ.h"
 #include "sboundary.h"
+#include "pwell.h"
 
 #if _OPENMP
 #include <omp.h>
@@ -153,6 +154,16 @@ INT bonded_inter( DOUBLE* _E, INT tid, DOUBLE curr_time )
         for ( i = g_id; i < size; i += g_numprocs )
         {
             rep |= sboundary_ext( coord + i * DIMS1, F[tid] + DIMS0*i );
+        }
+    }
+    if( pwell && bc == BC_PWELL )
+    {
+#ifdef _OPENMP
+#pragma omp for schedule( static ) nowait
+#endif
+        for ( i = g_id; i < size; i += g_numprocs )
+        {
+            rep |= pwellg_ext( coord + i * DIMS1, F[tid] + DIMS0*i );
         }
     }
     return rep;

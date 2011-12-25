@@ -31,6 +31,7 @@ bd_box_SOURCES = main.c \
                  potentials/pre_func.c \
                  potentials/bucket.c potentials/bucket.h \
                  potentials/sboundary.c potentials/sboundary.h \
+                 potentials/pwell.c potentials/pwell.h \
                  diff_alg/cholesky_mpi.c diff_alg/cholesky_mpi.h \
                  diff_alg/newton.h \
                  diff_alg/diff_tensor.h \

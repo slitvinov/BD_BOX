@@ -83,16 +83,17 @@ am__bd_box_SOURCES_DIST = main.c data.c data.h input.c input.h \
 	potentials/electro_ext.h potentials/LJ.c potentials/LJ.h \
 	potentials/pre_func.c potentials/bucket.c potentials/bucket.h \
 	potentials/sboundary.c potentials/sboundary.h \
-	diff_alg/cholesky_mpi.c diff_alg/cholesky_mpi.h \
-	diff_alg/newton.h diff_alg/diff_tensor.h \
-	potentials/calc_func.h cuda.c cuda.h potentials/sse_mathfun.h \
-	potentials/cuda/calc_func.cu potentials/cuda/sorter.cu \
-	potentials/cuda/sorter.cuh diff_alg/cuda/diff_tensor.cu \
-	diff_alg/cuda/diff_tensor.cuh diff_alg/cuda/diff_rand.cu \
-	diff_alg/cuda/diff_comp.cu diff_alg/cuda/diff_decl.cu \
-	diff_alg/cuda/diff_equation.cu diff_alg/cuda/newton.cu \
-	netdecl.cuh potentials/calc_func_sse.c diff_alg/diff_tensor.c \
-	diff_alg/diff_rand.c diff_alg/diff_comp.c diff_alg/diff_decl.c \
+	potentials/pwell.c potentials/pwell.h diff_alg/cholesky_mpi.c \
+	diff_alg/cholesky_mpi.h diff_alg/newton.h \
+	diff_alg/diff_tensor.h potentials/calc_func.h cuda.c cuda.h \
+	potentials/sse_mathfun.h potentials/cuda/calc_func.cu \
+	potentials/cuda/sorter.cu potentials/cuda/sorter.cuh \
+	diff_alg/cuda/diff_tensor.cu diff_alg/cuda/diff_tensor.cuh \
+	diff_alg/cuda/diff_rand.cu diff_alg/cuda/diff_comp.cu \
+	diff_alg/cuda/diff_decl.cu diff_alg/cuda/diff_equation.cu \
+	diff_alg/cuda/newton.cu netdecl.cuh potentials/calc_func_sse.c \
+	diff_alg/diff_tensor.c diff_alg/diff_rand.c \
+	diff_alg/diff_comp.c diff_alg/diff_decl.c \
 	diff_alg/diff_equation.c diff_alg/newton.c \
 	potentials/calc_func.c
 am__dirstamp = $(am__leading_dot)dirstamp
@@ -122,8 +123,9 @@ am_bd_box_OBJECTS = main.$(OBJEXT) data.$(OBJEXT) input.$(OBJEXT) \
 	angle.$(OBJEXT) angle_cos.$(OBJEXT) dihe.$(OBJEXT) \
 	dihe_angle.$(OBJEXT) electro.$(OBJEXT) electro_ext.$(OBJEXT) \
 	LJ.$(OBJEXT) pre_func.$(OBJEXT) bucket.$(OBJEXT) \
-	sboundary.$(OBJEXT) cholesky_mpi.$(OBJEXT) cuda.$(OBJEXT) \
-	$(am__objects_1) $(am__objects_2) $(am__objects_3)
+	sboundary.$(OBJEXT) pwell.$(OBJEXT) cholesky_mpi.$(OBJEXT) \
+	cuda.$(OBJEXT) $(am__objects_1) $(am__objects_2) \
+	$(am__objects_3)
 bd_box_OBJECTS = $(am_bd_box_OBJECTS)
 bd_box_LDADD = $(LDADD)
 bd_box_LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(bd_box_LDFLAGS) \
@@ -248,10 +250,11 @@ bd_box_SOURCES = main.c data.c data.h input.c input.h output.c \
 	potentials/electro_ext.h potentials/LJ.c potentials/LJ.h \
 	potentials/pre_func.c potentials/bucket.c potentials/bucket.h \
 	potentials/sboundary.c potentials/sboundary.h \
-	diff_alg/cholesky_mpi.c diff_alg/cholesky_mpi.h \
-	diff_alg/newton.h diff_alg/diff_tensor.h \
-	potentials/calc_func.h cuda.c cuda.h potentials/sse_mathfun.h \
-	$(am__append_1) $(am__append_2) $(am__append_3)
+	potentials/pwell.c potentials/pwell.h diff_alg/cholesky_mpi.c \
+	diff_alg/cholesky_mpi.h diff_alg/newton.h \
+	diff_alg/diff_tensor.h potentials/calc_func.h cuda.c cuda.h \
+	potentials/sse_mathfun.h $(am__append_1) $(am__append_2) \
+	$(am__append_3)
 bd_box_LDFLAGS = $(OPENMP_LDDFLAGS)
 AM_CFLAGS = $(OPENMP_CFLAGS)
 all: all-am
@@ -399,6 +402,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/newton.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/output.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pre_func.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pwell.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/rand_move.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/restart.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sboundary.Po@am__quote@
@@ -571,6 +575,20 @@ sboundary.obj: potentials/sboundary.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='potentials/sboundary.c' object='sboundary.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o sboundary.obj `if test -f 'potentials/sboundary.c'; then $(CYGPATH_W) 'potentials/sboundary.c'; else $(CYGPATH_W) '$(srcdir)/potentials/sboundary.c'; fi`
+
+pwell.o: potentials/pwell.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT pwell.o -MD -MP -MF $(DEPDIR)/pwell.Tpo -c -o pwell.o `test -f 'potentials/pwell.c' || echo '$(srcdir)/'`potentials/pwell.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/pwell.Tpo $(DEPDIR)/pwell.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='potentials/pwell.c' object='pwell.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o pwell.o `test -f 'potentials/pwell.c' || echo '$(srcdir)/'`potentials/pwell.c
+
+pwell.obj: potentials/pwell.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT pwell.obj -MD -MP -MF $(DEPDIR)/pwell.Tpo -c -o pwell.obj `if test -f 'potentials/pwell.c'; then $(CYGPATH_W) 'potentials/pwell.c'; else $(CYGPATH_W) '$(srcdir)/potentials/pwell.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/pwell.Tpo $(DEPDIR)/pwell.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='potentials/pwell.c' object='pwell.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o pwell.obj `if test -f 'potentials/pwell.c'; then $(CYGPATH_W) 'potentials/pwell.c'; else $(CYGPATH_W) '$(srcdir)/potentials/pwell.c'; fi`
 
 cholesky_mpi.o: diff_alg/cholesky_mpi.c
 @am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT cholesky_mpi.o -MD -MP -MF $(DEPDIR)/cholesky_mpi.Tpo -c -o cholesky_mpi.o `test -f 'diff_alg/cholesky_mpi.c' || echo '$(srcdir)/'`diff_alg/cholesky_mpi.c

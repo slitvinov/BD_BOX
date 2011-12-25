@@ -57,6 +57,7 @@
 #include "potentials/electro_ext.h"
 #include "potentials/LJ.h"
 #include "potentials/sboundary.h"
+#include "potentials/pwell.h"
 
 #define STR_HELP "help"
 #define STR_HELPs "h"
@@ -148,6 +149,10 @@ MAKE_STR_PTR(sboundary),
 MAKE_STR_PTR(sboundary_A),
 MAKE_STR_PTR(sboundary_n),
 MAKE_STR_PTR(sboundary_cutoff),
+MAKE_STR_PTR(pwell),
+MAKE_STR_PTR(pwell_A),
+MAKE_STR_PTR(pwell_n),
+MAKE_STR_PTR(pwell_cutoff),
 MAKE_STR_PTR(check_overlap),
 MAKE_STR_PTR(geyer_on_the_fly),
 MAKE_STR_PTR(cuda_block)};
@@ -500,6 +505,7 @@ void apply_options( int res_mode )
         warning("Geyer on the fly turned off", __FILE__, __LINE__ );
     }
     if( sboundary_n < 0 ) UNERR("Wrong value for sboundary_n > 0");
+    if( pwell_n < 0 ) UNERR("Wrong value for pwell_n > 0");
 }
 
 void read_str_file()
