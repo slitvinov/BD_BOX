@@ -84,3 +84,21 @@ To visualize
 punto  -B 0:0:0:1000:1000:1000 dna.punto 
 #+end_example
 
+
+* DNA in DNA_BSPHERE
+#+begin_src screen :cmd bash :session run-dna-bs
+cd examples/DNA_BSPHERE
+../../src/bd_box  dna_bsphere.prm \
+--xyz_filename=dna_bsphere.xyz \
+--dcd_filename=dna_bsphere.dcd \
+--enr_filename=dna_bsphere.enr \
+--str_filename=dna_bsphere.str \
+--out_filename=dna_bsphere.out \
+--pqr_filename=dna_bsphere.pqr
+#+end_src
+
+#+begin_src screen :cmd bash :session post-dna-bs
+awk -v cm=1 -v fr=1 -f scripts/xyz2punto.awk examples/DNA_BSPHERE/dna_bsphere.xyz > examples/DNA_BSPHERE/dna_bsphere.fr
+awk -f scripts/autocorr.awk examples/DNA_BSPHERE/dna_bsphere.fr > examples/DNA_BSPHERE/dna_bsphere.fr-corr
+awk -v cm=1 -f scripts/xyz2punto.awk examples/DNA_BSPHERE/dna_bsphere.xyz > examples/DNA_BSPHERE/dna_bsphere.punto
+#+end_src
