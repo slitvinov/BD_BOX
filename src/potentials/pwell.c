@@ -35,39 +35,13 @@ MAKE_STR_IN(DOUBLE, pwell_cutoff, 0, "the bounding sphere force is applied outsi
 
 INT pwell_ext( DOUBLE* coord, DOUBLE* F )
 {
-    DOUBLE r = norm3v( coord );
-    if ( r >= pwell_cutoff )
-    {
-        DOUBLE R = sphere_radius - r;
-        if( R >= EPSILON )
-        {
-            DOUBLE e[3];
-            DOUBLE inr = 1.0f / r;
-            DOUBLE inR = 1.0f / R;
-            INT i;
-            for ( i = 1; i <= pwell_n; i*=2 )
-            {
-                if ( pwell_n & i )
-                    inr *= inR;
-                inR *= inR;
-            }
-            e[0] = pwell_A * coord[0] * inr;
-            e[1] = pwell_A * coord[1] * inr;
-            e[2] = pwell_A * coord[2] * inr;
-
-            F[0] -= e[0];
-            F[1] -= e[1];
-            F[2] -= e[2];
-            
-            return 0;
-        }
-        else
-        {
-            return 1;
-        }
-    }
-    else
-    {
-        return 0;
-    }
+  DOUBLE e[3];
+  e[0] = 0.0;
+  e[1] = pwell_A * coord[1];
+  e[2] = 0.0;
+  
+  F[0] -= e[0];
+  F[1] -= e[1];
+  F[2] -= e[2];
+  return 0;
 }

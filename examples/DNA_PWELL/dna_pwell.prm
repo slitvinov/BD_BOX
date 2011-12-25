@@ -25,7 +25,7 @@ bond_c_scale 0.0
 bc pwell
 sphere_radius 1325
 pwell yes
-pwell_A 1.7766
+pwell_A 1e-8
 pwell_cutoff 1300
 pwell_n 1
 algorithm ermak_const
