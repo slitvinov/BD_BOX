@@ -38,14 +38,6 @@ MAKE_STR_DEC(YESNO,pwell)
 extern DOUBLE pwell_A;
 MAKE_STR_DEC(DOUBLE,pwell_A)
 
-/*! The bounding sphere force, n value. */
-extern INT pwell_n;
-MAKE_STR_DEC(INT,pwell_n)
-
-/*! The bounding sphere force, cutoff. */
-extern DOUBLE pwell_cutoff;
-MAKE_STR_DEC(DOUBLE, pwell_cutoff)
-
 /*! Compute sphere boundary forces values.
  *  \param coord coordinate array of bead
  *  \param F [out] forces value */

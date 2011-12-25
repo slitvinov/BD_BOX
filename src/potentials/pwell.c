@@ -30,8 +30,6 @@
 
 MAKE_STR_IN(YESNO,  pwell,   0, "yes/no - switch the bounding sphere field on/off")
 MAKE_STR_IN(DOUBLE, pwell_A, 1, "the magnitude of the bounding sphere force")
-MAKE_STR_IN(INT,    pwell_n, 2, "the power of the radial distance dependence of the bounding sphere force")
-MAKE_STR_IN(DOUBLE, pwell_cutoff, 0, "the bounding sphere force is applied outside this cutoff radius" )
 
 INT pwell_ext( DOUBLE* coord, DOUBLE* F )
 {
