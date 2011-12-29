@@ -1,36 +1,49 @@
-dt 1.0
+# the time step, in [ps]
+dt 10.0
+# temperature [K]
 T 298.15
-visc 0.01
+# viscosity [Poise]
+visc 0.0102
+# factor for conversion of viscosity units, default: 14.4,
 vfactor 14.4
-bdsteps 500000
-save_dcd_freq 10
-save_rst_freq 10
-save_enr_freq 10
-dcd_filename dna_pwell.dcd
-enr_filename dna_pwell.enr
-str_filename dna_pwell.str
-out_filename dna_pwell.out
-pqr_filename dna_pwell.pqr
-rst_filename dna_pwell.rst
+# the total number of simulations steps
+bdsteps 50000000
+save_xyz_freq 1000
+save_rst_freq 1000
+save_enr_freq 1000
+# the \alpha (Equation 7) parameter for Lennard-Jones interactions
+# scaling, typically 4.0
 alpha_lj 4.0
-lj_6_term yes
-elec yes
-gamma_c 331.842
-kappa_c 0.1039
+# whether to use the 1/r^6 term in the Lennard-Jones potential
+# "no" for purely repulsive Lennard-Jones potential
+lj_6_term no
+# whether electrostatic interactions should be evaluated
+elec no
+# the number of attempts of repeating a particular simulation step
 move_attempts 10000000
+# the cutoff radius for Lennard-Jones interactions, default:
+# 0.0. Setting the cutoff lj to -1 results in cutoff defined for each
+# pair of the subunits as 2^{1/6}(Ri + Rj)
 cutoff_lj -1
-cutoff_c 250.0
+# the scaling factor for Lennard-Jones interactions between bonded
 bond_lj_scale 1.0
-bond_c_scale 0.0
-bc pwell
-sphere_radius 1325
-pwell yes
-pwell_A 1e-8
+# whether to check for overlaps in the studied system after each simulations step
+check_overlap no
+# bc string - boundary conditions to be used, either none, periodic or sphere, default: none
+bc none
+# algorithm for the trajectory generation
 algorithm ermak_const
 rand_seed 7239847
-hydro geyer
-epsilon_c 78.54
-e_collision 1
-nb_list bucket_space
-check_overlap no
+# the method used to evaluate hydrodynamic interactions, can be set to
+# none (a diagonal form of the diffusion tensor will be used
+# throughout the simulation)
+hydro cholesky
+# this keyword specifies the algorithm used to create non-bonded
+# interactions lists
+nb_list brute
+# the velocity gradient tensor
+#vel_grad_tensor 0.0 1e-5 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+vel_grad_tensor 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
 
+# well potential
+pwell yes

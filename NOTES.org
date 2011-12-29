@@ -84,7 +84,6 @@ To visualize
 punto  -B 0:0:0:1000:1000:1000 dna.punto 
 #+end_example
 
-
 * DNA in DNA_BSPHERE
 #+begin_src screen :cmd bash :session run-dna-bs
 cd examples/DNA_BSPHERE
@@ -104,6 +103,9 @@ awk -v cm=1 -f scripts/xyz2punto.awk examples/DNA_BSPHERE/dna_bsphere.xyz > exam
 #+end_src
 
 * DNA in DNA_PWELL
+
+[[file:examples/DNA_PWELL/dna_pwell.prm]]
+
 #+begin_src screen :cmd bash :session run-dna-bs
 N=30
 awk -v N=${N} -f scripts/polygen.awk > examples/DNA_PWELL/dna_pwell.str
@@ -114,9 +116,11 @@ cd examples/DNA_PWELL
 --enr_filename=dna_pwell.enr \
 --str_filename=dna_pwell.str \
 --out_filename=dna_pwell.out \
---pqr_filename=dna_pwell.pqr
+--pqr_filename=dna_pwell.pqr \
+--pwell_A=1.0e2
 #+end_src
 
 #+begin_src screen :cmd bash :session post-dna-bs
-awk -v cm=1 -f scripts/xyz2punto.awk examples/DNA_PWELL/dna_pwell.xyz > examples/DNA_PWELL/dna_pwell.punto
+awk -v cm=1 -f scripts/xyz2punto.awk \
+    examples/DNA_PWELL/dna_pwell.xyz > examples/DNA_PWELL/dna_pwell.punto
 #+end_src
