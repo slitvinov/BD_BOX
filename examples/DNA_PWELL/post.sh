@@ -1,6 +1,5 @@
 #! /bin/bash
 
-
 nskip=10
 for xyz in *.xyz; do
     basename=${xyz%.*}
@@ -16,8 +15,8 @@ for xyz in *.xyz; do
 
     awk -v idx=2 -f ../../scripts/autocorr.awk ${basename}.fr > \
 	${basename}.fr-corr-Y
-    cp ${basename}.fr-corr-X ~/Dropbox/
-    cp ${basename}.fr-corr-Y ~/Dropbox/
+    #cp ${basename}.fr-corr-X ~/Dropbox/
+    #cp ${basename}.fr-corr-Y ~/Dropbox/
 done
 
 awk -f ../../scripts/av.awk dna_pwell.proc*.fr-corr-X  > dna_pwell.fr-corr-X
