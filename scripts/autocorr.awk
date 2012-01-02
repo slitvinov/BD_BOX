@@ -1,5 +1,11 @@
-NF{ 
-    array[N]=$1; 
+BEGIN{
+    if (length(idx)==0) {
+	idx=1
+    }
+}
+
+NF{
+    array[N]=$(idx);
     N++
 }
 

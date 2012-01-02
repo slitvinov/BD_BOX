@@ -1,7 +1,8 @@
 #! /bin/bash
 
-N=60
-pwell_A=1e-5
+N=20
+#pwell_A=1e-5
+
 awk -v N=${N} -f ../../scripts/polygen.awk > dna_pwell.str
 ../../src/bd_box  dna_pwell.prm \
 --xyz_filename=dna_pwell.xyz \
