@@ -3,7 +3,8 @@ C0(t) = exp(-t/tau_G)
 C(t)=1.0 / cos(phi) * cos(omega*t + phi) * exp(-t/tau_G)
 
 file="<awk '{print NR-1, $1}' examples/DNA_PWELL/dna_pwell.fr-corr"
-tua_G=40
-phi = 10
+tau_G=40
+phi = 1.0
 omega = 0.025
-plot [0:350][-0.4:1.0] file w l, C(x)
+fit [0:500] C(x) file via tau_G, omega, phi
+plot [0:500][:1.0] file w l, C(x)
