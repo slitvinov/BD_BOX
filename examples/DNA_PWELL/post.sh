@@ -1,7 +1,7 @@
 #! /bin/bash
 
 
-nskip=100
+nskip=10
 for xyz in *.xyz; do
     basename=${xyz%.*}
     printf "processing: %s\n" ${basename}

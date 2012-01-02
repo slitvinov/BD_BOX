@@ -7,7 +7,7 @@ BEGIN {
 	N=60
     }
     # distance between neghiboring beads
-    dy=25
+    dy=30
     # the hydrodynamic radius of the subunit
     sigma=12.25
     # the central charge
@@ -16,7 +16,7 @@ BEGIN {
     # should be doubled in the structure file, 2R)
     R=24.5
     # Lennard-Jones well depth
-    eps=1.7766
+    eps=3.7766
     # mass
     mass=1
 

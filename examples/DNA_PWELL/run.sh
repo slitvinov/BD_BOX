@@ -21,7 +21,7 @@ function run() {
 }
 
 
-nproc=8
+nproc=1
 for ip in $(seq 1 ${nproc}); do
-    run ${ip} &
+    run ${ip}
 done
