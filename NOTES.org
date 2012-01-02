@@ -107,7 +107,8 @@ awk -v cm=1 -f scripts/xyz2punto.awk examples/DNA_BSPHERE/dna_bsphere.xyz > exam
 [[file:examples/DNA_PWELL/dna_pwell.prm]]
 
 #+begin_src screen :cmd bash :session run-dna-bs
-N=30
+N=60
+pwell_A=1e-5
 awk -v N=${N} -f scripts/polygen.awk > examples/DNA_PWELL/dna_pwell.str
 cd examples/DNA_PWELL
 ../../src/bd_box  dna_pwell.prm \
@@ -117,10 +118,14 @@ cd examples/DNA_PWELL
 --str_filename=dna_pwell.str \
 --out_filename=dna_pwell.out \
 --pqr_filename=dna_pwell.pqr \
---pwell_A=1.0e2
+--pwell_A=0.0
 #+end_src
 
 #+begin_src screen :cmd bash :session post-dna-bs
 awk -v cm=1 -f scripts/xyz2punto.awk \
     examples/DNA_PWELL/dna_pwell.xyz > examples/DNA_PWELL/dna_pwell.punto
+awk -v cm=1 -v fr=1 -f scripts/xyz2punto.awk examples/DNA_PWELL/dna_pwell.xyz > \
+    examples/DNA_PWELL/dna_pwell.fr
+awk -f scripts/autocorr.awk examples/DNA_PWELL/dna_pwell.fr > \
+       examples/DNA_PWELL/dna_pwell.fr-corr
 #+end_src

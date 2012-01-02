@@ -1,5 +1,5 @@
 # the time step, in [ps]
-dt 10.0
+dt 3.0
 # temperature [K]
 T 298.15
 # viscosity [Poise]
@@ -8,9 +8,9 @@ visc 0.0102
 vfactor 14.4
 # the total number of simulations steps
 bdsteps 50000000
-save_xyz_freq 1000
-save_rst_freq 1000
-save_enr_freq 1000
+save_xyz_freq 10000
+save_rst_freq 10000
+save_enr_freq 10000
 # the \alpha (Equation 7) parameter for Lennard-Jones interactions
 # scaling, typically 4.0
 alpha_lj 4.0
@@ -30,20 +30,19 @@ bond_lj_scale 1.0
 # whether to check for overlaps in the studied system after each simulations step
 check_overlap no
 # bc string - boundary conditions to be used, either none, periodic or sphere, default: none
-bc none
+bc pwell
 # algorithm for the trajectory generation
 algorithm ermak_const
 rand_seed 7239847
 # the method used to evaluate hydrodynamic interactions, can be set to
 # none (a diagonal form of the diffusion tensor will be used
 # throughout the simulation)
-hydro cholesky
+hydro none
 # this keyword specifies the algorithm used to create non-bonded
 # interactions lists
 nb_list brute
 # the velocity gradient tensor
-#vel_grad_tensor 0.0 1e-5 0.0 0.0 0.0 0.0 0.0 0.0 0.0
-vel_grad_tensor 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+vel_grad_tensor 0.0 1e-5 0.0 0.0 0.0 0.0 0.0 0.0 0.0
 
 # well potential
 pwell yes
