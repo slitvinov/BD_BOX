@@ -1,6 +1,6 @@
 #! /bin/bash
 
-N=20
+N=60
 #pwell_A=1e-5
 
 function run() {
