@@ -2,7 +2,7 @@
 
 N=60
 pwell_A=1e-5
-awk -v N=${N} -f scripts/polygen.awk > examples/DNA_PWELL/dna_pwell.str
+awk -v N=${N} -f ../../scripts/polygen.awk > dna_pwell.str
 ../../src/bd_box  dna_pwell.prm \
 --xyz_filename=dna_pwell.xyz \
 --dcd_filename=dna_pwell.dcd \
