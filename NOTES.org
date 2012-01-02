@@ -108,19 +108,30 @@ awk -v cm=1 -f scripts/xyz2punto.awk examples/DNA_BSPHERE/dna_bsphere.xyz > exam
 
 #+begin_src screen :cmd bash :session run-dna-bs
 N=30
-awk -v N=${N} -f scripts/polygen.awk > examples/DNA_PWELL/dna_pwell.str
+pwell_A=1.0e-4
+awk -v N=${N} -f scripts/polygen.awk > examples/DNA_PWELL/dna_pwell.str.${pwell_A}
 cd examples/DNA_PWELL
 ../../src/bd_box  dna_pwell.prm \
---xyz_filename=dna_pwell.xyz \
---dcd_filename=dna_pwell.dcd \
---enr_filename=dna_pwell.enr \
---str_filename=dna_pwell.str \
---out_filename=dna_pwell.out \
---pqr_filename=dna_pwell.pqr \
---pwell_A=1.0e2
+--xyz_filename=dna_pwell.xyz.${pwell_A} \
+--dcd_filename=dna_pwell.dcd.${pwell_A} \
+--enr_filename=dna_pwell.enr.${pwell_A} \
+--str_filename=dna_pwell.str.${pwell_A} \
+--out_filename=dna_pwell.out.${pwell_A} \
+--pqr_filename=dna_pwell.pqr.${pwell_A} \
+--pwell_A=${pwell_A}
 #+end_src
 
 #+begin_src screen :cmd bash :session post-dna-bs
+export pwell_A=1.0e-4
+export basename=examples/DNA_PWELL/dna_pwell
+awk -f scripts/xyz2punto.awk \
+    ${basename}.xyz.${pwell_A} > \
+    ${basename}.punto.nocm.${pwell_A}
 awk -v cm=1 -f scripts/xyz2punto.awk \
-    examples/DNA_PWELL/dna_pwell.xyz > examples/DNA_PWELL/dna_pwell.punto
+    ${basename}.xyz.${pwell_A} > \
+    ${basename}.punto.${pwell_A}
+awk -v cm=1 -v fr=1 -f scripts/xyz2punto.awk ${basename}.xyz.${pwell_A} > \
+    ${basename}.fr.${pwell_A}
+awk -f scripts/autocorr.awk ${basename}.fr.${pwell_A} > \
+    ${basename}.fr-corr.${pwell_A}
 #+end_src

@@ -30,7 +30,7 @@ bond_lj_scale 1.0
 # whether to check for overlaps in the studied system after each simulations step
 check_overlap no
 # bc string - boundary conditions to be used, either none, periodic or sphere, default: none
-bc none
+bc pwell
 # algorithm for the trajectory generation
 algorithm ermak_const
 rand_seed 7239847
@@ -42,8 +42,9 @@ hydro cholesky
 # interactions lists
 nb_list brute
 # the velocity gradient tensor
-#vel_grad_tensor 0.0 1e-5 0.0 0.0 0.0 0.0 0.0 0.0 0.0
-vel_grad_tensor 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+vel_grad_tensor 0.0 1e-5 0.0 0.0 0.0 0.0 0.0 0.0 0.0
 
 # well potential
 pwell yes
+pwell_A 0.0
+
