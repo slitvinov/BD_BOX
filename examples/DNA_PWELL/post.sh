@@ -1,13 +1,19 @@
 #! /bin/bash
 
-awk -v cm=1 -f ../../scripts/xyz2punto.awk \
-    dna_pwell.xyz > dna_pwell.punto
 
-awk -v fr=1 -f ../../scripts/xyz2punto.awk dna_pwell.xyz > \
-    dna_pwell.fr
 
-awk -f ../../scripts/autocorr.awk dna_pwell.fr > \
-       dna_pwell.fr-corr
+for xyz in *.xyz; do
+    basename=${xyz%.*}
+    printf "processing: %s\n" ${basename}
+    awk -v cm=1 -f ../../scripts/xyz2punto.awk \
+	${basename}.xyz > ${basename}.punto
 
-awk -v idx=2 -f ../../scripts/autocorr.awk dna_pwell.fr > \
-       dna_pwell.fr-corr-2
+    awk -v fr=1 -f ../../scripts/xyz2punto.awk ${basename}.xyz > \
+	${basename}.fr
+
+    awk -f ../../scripts/autocorr.awk ${basename}.fr > \
+	${basename}.fr-corr-X
+
+    awk -v idx=2 -f ../../scripts/autocorr.awk ${basename}.fr > \
+	${basename}.fr-corr-Y
+done
