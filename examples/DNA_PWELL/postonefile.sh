@@ -1,8 +1,10 @@
 #! /bin/bash
 
+set -e
+set -u
 xyz=$1
 basename=${xyz%.*}
-nksip=1000
+nskip=1000
 printf "start processing: %s\n" ${basename}
 awk -v cm=1 -f ../../scripts/xyz2punto.awk \
     ${basename}.xyz > ${basename}.punto
@@ -15,7 +17,5 @@ awk -f ../../scripts/autocorr.awk ${basename}.fr > \
 
 awk -v idx=2 -f ../../scripts/autocorr.awk ${basename}.fr > \
     ${basename}.fr-corr-Y
-    #cp ${basename}.fr-corr-X ~/Dropbox/
-    #cp ${basename}.fr-corr-Y ~/Dropbox/
 
 printf "finish processing: %s\n" ${basename}
