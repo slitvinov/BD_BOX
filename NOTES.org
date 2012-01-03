@@ -12,6 +12,7 @@ http://dx.doi.org/10.1002/jcc.21847
 * compile
 #+begin_src sh :results silent
 # ./configure CC=icc CFLAGS=-O3 --with-cuda=no
+# /configure --enable-mpi=no --with-cuda=no CC=cc --disable-openmp
 ./configure
 make
 #+end_src
