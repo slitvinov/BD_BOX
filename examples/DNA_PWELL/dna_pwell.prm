@@ -47,4 +47,4 @@ nb_list brute
 vel_grad_tensor 0.0 4e-6 0.0 0.0 0.0 0.0 0.0 0.0 0.0
 
 # well potential
-pwell yes
+pwell no
