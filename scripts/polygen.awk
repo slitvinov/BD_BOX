@@ -5,7 +5,7 @@ BEGIN {
     kb = 1.38e-23
     Na = 6.023e23
     Rconst = 8.3144 # J * mol^-1 * K^-1
-    jInkcal = 4184 
+    jInkcal = 4184
     T = 298.15
     
     # the number of beads
@@ -21,7 +21,7 @@ BEGIN {
     # the central charge
     Q=0.0
     # Lennard-Jones well depth
-    eps= Rconst/jInkcal*T * 10.0
+    eps= Rconst/jInkcal*T
     printf("eps: %f\n", eps) > "/dev/stderr"
 
     # mass
@@ -29,11 +29,12 @@ BEGIN {
     # the equilibrium bond length
     r0=0.0
     # the maximum bond length
-    rmax=1.5*R
+    rmax=1.5*R         * 2.0
     # the force constant
-    H= 123 * Rconst*T / (rmax*rmax) / jInkcal
+    H= 123 * (Rconst*T/jInkcal) / (rmax*rmax)
     printf("H: %f\n", H) > "/dev/stderr"
     # the hydrodynamic radius of the subunit
+    #sigma= rmax/3.0
     sigma= rmax/3.0
     printf("sigma: %f\n", sigma) > "/dev/stderr"
 
@@ -42,13 +43,13 @@ BEGIN {
     z0=0.0
 
     for (id=1; id<N+1; id++) {
-	printf("sub DNA %i %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f\n", 
+	printf("sub DNA %i %.2e %.2e %.2e %.2e %.2e %.2e %.2e %.2e\n", 
 	       id, x0, y0, z0, sigma, Q, R, eps, mass)
 	y0+=dy
     }
 
     for (id=1; id<N; id++) {
-	printf("bond %i %i %.2f %.2f %.2f\n",
+	printf("bond %i %i %.2e %.2e %.2e\n",
 	       id, id+1, r0, rmax, H);
     }
 }

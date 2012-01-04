@@ -1,9 +1,9 @@
 # the time step, in [ps]
-dt 5.0
+dt 10.0
 # temperature [K]
 T 298.15
 # viscosity [Poise]
-visc 0.0102
+visc 0.01
 # factor for conversion of viscosity units, default: 14.4,
 vfactor 14.4
 # the total number of simulations steps
@@ -33,7 +33,7 @@ check_overlap yes
 # bc string - boundary conditions to be used, either none, periodic or sphere, default: none
 bc none
 # algorithm for the trajectory generation
-algorithm ermak_const
+algorithm igt_const
 rand_seed 7239847
 # the method used to evaluate hydrodynamic interactions, can be set to
 # none (a diagonal form of the diffusion tensor will be used
@@ -41,10 +41,10 @@ rand_seed 7239847
 hydro none
 # this keyword specifies the algorithm used to create non-bonded
 # interactions lists
-nb_list brute
+nb_list bucket_list
 # the velocity gradient tensor
-#vel_grad_tensor 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
-vel_grad_tensor 0.0 4e-6 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+vel_grad_tensor 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#vel_grad_tensor 0.0 4e-6 0.0 0.0 0.0 0.0 0.0 0.0 0.0
 
 # well potential
 pwell no
