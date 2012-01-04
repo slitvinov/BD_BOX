@@ -3,7 +3,8 @@ set -e
 set -u
 N=60
 iproc=$1
-id=dna_pwell.proc${iproc}
+vel_grad=$2
+id=dna_pwell.proc${iproc}.vel_grad${vel_grad}
 seed=$RANDOM
 printf "seed: %s\n" ${seed} > "/dev/stderr"
 printf "run: %s\n" ${id}
@@ -13,5 +14,6 @@ awk -v N=${N} -f ../../scripts/polygen.awk > ${id}.str
     --str_filename=${id}.str \
     --out_filename=${id}.out \
     --rand_seed=${seed} \
-    --pwell_A=0.0
+    --vel_grad_tensor="0.0 ${vel_grad} 0.0 0.0 0.0 0.0 0.0 0.0 0.0"
+
 printf "stop: %s\n" ${id} > "/dev/stderr"

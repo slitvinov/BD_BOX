@@ -4,7 +4,7 @@ set -e
 set -u
 xyz=$1
 basename=${xyz%.*}
-nskip=1000
+nskip=10
 printf "start processing: %s\n" ${basename}
 awk -v cm=1 -f ../../scripts/xyz2punto.awk \
     ${basename}.xyz > ${basename}.punto
