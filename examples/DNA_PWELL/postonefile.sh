@@ -12,6 +12,10 @@ awk -v cm=1 -f ../../scripts/xyz2punto.awk \
 awk -v fr=1 -f ../../scripts/xyz2punto.awk ${basename}.xyz | \
     awk -v ns=${nskip} 'NR>ns' > ${basename}.fr
 
+awk -v e2e=1 -f ../../scripts/xyz2punto.awk ${basename}.xyz | \
+    awk -v ns=${nskip} 'NR>ns' | \
+    awk -v e2e=1 -f ../../scripts/msd.awk > ${basename}.msd
+
 awk -f ../../scripts/autocorr.awk ${basename}.fr > \
     ${basename}.fr-corr-X
 

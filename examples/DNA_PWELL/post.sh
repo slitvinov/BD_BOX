@@ -13,6 +13,8 @@ ls *.xyz | parallel  --verbose ./postonefile.sh {}
 for pat in $(getparlist vel_grad); do
     awk -f ../../scripts/av.awk dna_pwell.proc*vel_grad${pat}*.fr-corr-X  > dna_pwell.vel_grad${pat}fr-corr-X
     awk -f ../../scripts/av.awk dna_pwell.proc*vel_grad${pat}*.fr-corr-Y  > dna_pwell.vel_grad${pat}fr-corr-Y
+    awk -f ../../scripts/av.awk dna_pwell.proc*vel_grad${pat}*.mds  > dna_pwell.vel_grad${pat}msd
     scp dna_pwell.vel_grad${pat}fr-corr-[XY] litvinov@kana:~/Dropbox/
+    scp dna_pwell.vel_grad${pat}fr-corr-msd litvinov@kana:~/Dropbox/
 done
 
