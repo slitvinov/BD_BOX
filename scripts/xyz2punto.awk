@@ -43,8 +43,14 @@ function get_fr(                i,N,pi,fcos) {
     zr/=N
 }
 
+function end2endY(                         ) {
+    ye = y[ib] - y[1]
+}
+
 function print_snap(            i) {
-    if (fr==1) {
+    if (e2e==1) {
+	print ye
+    } else if (fr==1) {
 	print xr, yr, zr
     } else {
 	for (i=1; i<ib+1; i++) {
@@ -84,6 +90,9 @@ NF==1{
 	}
 	if (fr==1) {
 	    get_fr()
+	}
+	if (e2e==1) {
+	    end2endY()
 	}
 	print_snap()
     }
