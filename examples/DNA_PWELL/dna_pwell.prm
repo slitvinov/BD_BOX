@@ -1,5 +1,5 @@
 # the time step, in [ps]
-dt 5.0
+dt 10.0
 # temperature [K]
 T 298.15
 # viscosity [Poise]
@@ -38,7 +38,7 @@ rand_seed 7239847
 # the method used to evaluate hydrodynamic interactions, can be set to
 # none (a diagonal form of the diffusion tensor will be used
 # throughout the simulation)
-hydro none
+hydro cholesky
 # this keyword specifies the algorithm used to create non-bonded
 # interactions lists
 nb_list brute
