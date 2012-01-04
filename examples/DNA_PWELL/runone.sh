@@ -1,5 +1,6 @@
 #! /bin/bash
-
+set -e
+set -u
 N=60
 iproc=$1
 id=dna_pwell.proc${iproc}
