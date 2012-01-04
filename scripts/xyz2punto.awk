@@ -33,7 +33,7 @@ function get_fr(                i,N,pi,fcos) {
     pi=3.141592653589793
     for (i=1; i<N+1; i++) {
 	#fcos= cos (pi* (2*i+1) / (2*N) )
-	fcos= cos (pi* (i+0.5) / (N-1) )
+	fcos= cos (pi* (i-0.5) / N )
 	xr+= x[i] * fcos
 	yr+= y[i] * fcos
 	zr+= z[i] * fcos

@@ -43,8 +43,8 @@ hydro none
 # interactions lists
 nb_list brute
 # the velocity gradient tensor
-vel_grad_tensor 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
-#vel_grad_tensor 0.0 2e-5 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+#vel_grad_tensor 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+vel_grad_tensor 0.0 4e-6 0.0 0.0 0.0 0.0 0.0 0.0 0.0
 
 # well potential
 pwell yes
