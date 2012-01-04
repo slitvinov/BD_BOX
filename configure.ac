@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.63])
+AC_PREREQ([2.64])
 AC_INIT( BD_BOX, 1.0.2, mdlugosz@icm.edu.pl, bd_box.tgz, [http://bionano.icm.edu.pl/software/bd_box] )
 AC_CONFIG_SRCDIR([src/input.h])
 AC_CONFIG_HEADERS([config.h])

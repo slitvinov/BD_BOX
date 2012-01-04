@@ -1,0 +1,10 @@
+* BD_BUG
+./configure --enable-mpi=no --with-cuda=no CC=icc --disable-openmp CFLAGS=-O3
+
+autoconf (GNU Autoconf) 2.63
+automake (GNU automake) 1.10.1
+
+http://git.savannah.gnu.org/cgit/autoconf.git/tree/NEWS
+AC_INIT now takes an optional fifth parameter that can be used to
+set AC_PACKAGE_URL, a URL for the package's home page; the URL is
+used in `configure --help' and is also available via AC_DEFINE.
