@@ -1,6 +1,5 @@
 * BD_BUG
 ./configure --enable-mpi=no --with-cuda=no CC=icc --disable-openmp CFLAGS=-O3
-
 autoconf (GNU Autoconf) 2.63
 automake (GNU automake) 1.10.1
 
