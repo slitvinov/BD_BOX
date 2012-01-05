@@ -1,6 +1,7 @@
 #! /bin/bash
 set -e
 set -u
+bddir=../../
 N=60
 iproc=$1
 vel_grad=$2
@@ -8,8 +9,8 @@ id=dna_pwell.proc${iproc}.vel_grad${vel_grad}
 seed=$RANDOM
 printf "seed: %s\n" ${seed} > "/dev/stderr"
 printf "run: %s\n" ${id}
-awk -v N=${N} -f ../../scripts/polygen.awk > ${id}.str
-../../src/bd_box  dna_pwell.prm \
+awk -v N=${N} -f ${bddir}/scripts/polygen.awk > ${id}.str
+${bddir}/src/bd_box dna_pwell.prm \
     --xyz_filename=${id}.xyz \
     --str_filename=${id}.str \
     --out_filename=${id}.out \
