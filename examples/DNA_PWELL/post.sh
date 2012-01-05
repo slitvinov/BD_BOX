@@ -6,7 +6,7 @@ bddir=../../
 
 function getparlist() {
     local pat=$1
-    ls *.xyz -1 | xargs -n1 basname | awk -v RS="." /${pat}/ | sed "s/${pat}//" | sort | uniq
+    ls *.xyz -1 | xargs -n1 basename | awk -v RS="." /${pat}/ | sed "s/${pat}//" | sort | uniq
 }
 
 ls *.xyz | parallel  --verbose ./postonefile.sh {}
