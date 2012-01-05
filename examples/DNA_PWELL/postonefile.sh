@@ -16,7 +16,11 @@ awk -v fr=1 -f ${bddir}/scripts/xyz2punto.awk ${basename}.xyz | \
 
 awk -v e2e=1 -f ${bddir}/scripts/xyz2punto.awk ${basename}.xyz | \
     awk -v ns=${nskip} 'NR>ns' | \
-    awk -v e2e=1 -f ${bddir}/scripts/msd.awk > ${basename}.msd
+    awk -f ${bddir}/scripts/msd.awk > ${basename}.msd
+
+awk -v ocm=1 -f ${bddir}/scripts/xyz2punto.awk ${basename}.xyz | \
+    awk -v ns=${nskip} 'NR>ns' | \
+    awk -f ${bddir}/scripts/msdcm.awk > ${basename}.msdcm
 
 awk -f ${bddir}/scripts/autocorr.awk ${basename}.fr > \
     ${basename}.fr-corr-X
