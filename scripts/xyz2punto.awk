@@ -52,6 +52,8 @@ function print_snap(            i) {
 	print ye
     } else if (fr==1) {
 	print xr, yr, zr
+    } else if (ocm==1) {
+	print xc, yc, yc
     } else {
 	for (i=1; i<ib+1; i++) {
 	    if (i==1) {
@@ -69,6 +71,7 @@ function print_snap(            i) {
 BEGIN {
     next_is_comment=0
     ib=0
+    # colors for punto
     col_head=749
     col_tail=10
     col_rest=2
@@ -84,7 +87,9 @@ NF==1{
     # <number of atoms> line
     next_is_comment=1
     if (NR>1) {
-	if (cm==1) {
+	if (ocm==1) {
+	    get_cm()
+	} else if (cm==1) {
 	    get_cm()
 	    move_cm()
 	}

@@ -22,5 +22,4 @@ END  {
 	} 
 	print 0.5*sum1/(N-s)/(sum2/N)
     }
-	
 }
