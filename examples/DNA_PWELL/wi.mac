@@ -1,0 +1,10 @@
+dt: 10.0;
+frq: 10000;
+
+k: 130;
+
+tau: k*dt*frq;
+
+Wi: [0, 6, 90, 240, 6000];
+
+gamma_dot: Wi/tau;
