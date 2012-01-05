@@ -5,7 +5,7 @@ set -u
 xyz=$1
 basename=${xyz%.*}
 nskip=1000
-bddir=${HOME}/work/BD_BOX/
+bddir=../../
 
 printf "start processing: %s\n" ${basename}
 awk -v cm=1 -f ${bddir}/scripts/xyz2punto.awk \

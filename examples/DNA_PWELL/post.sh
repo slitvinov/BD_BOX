@@ -2,7 +2,7 @@
 
 set -e
 set -u
-bddir=${HOME}/work/BD_BOX/
+bddir=../../
 
 function getparlist() {
     local pat=$1
