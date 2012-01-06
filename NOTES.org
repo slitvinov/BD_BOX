@@ -12,7 +12,7 @@ http://dx.doi.org/10.1002/jcc.21847
 * compile
 #+begin_src sh :results silent
 # ./configure CC=icc CFLAGS=-O3 --with-cuda=no
-# /configure --enable-mpi=no --with-cuda=no CC=cc --disable-openmp
+# ./configure --enable-mpi=no --with-cuda=no CC=cc --disable-openmp
 ./configure
 make
 #+end_src
@@ -129,4 +129,9 @@ awk -v cm=1 -v fr=1 -f scripts/xyz2punto.awk examples/DNA_PWELL/dna_pwell.xyz > 
     examples/DNA_PWELL/dna_pwell.fr
 awk -f scripts/autocorr.awk examples/DNA_PWELL/dna_pwell.fr > \
        examples/DNA_PWELL/dna_pwell.fr-corr
+#+end_src
+
+* tmp
+#+begin_src sh
+scp lu79buz3@supzero.lrz.de://scratch/pr95zi/lu79buz3/bd_test/DNA_PWELL/dna_pwell.vel_grad* ~/Dropbox/smac/
 #+end_src
