@@ -1,0 +1,5 @@
+* sqlite
+- [ ] save parameters, save time, save output file
+- [ ] get all files with given properties
+- [ ] add parameter to the database
+- [ ] save postprocessing status
