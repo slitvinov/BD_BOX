@@ -6,7 +6,7 @@ source vars.sh
 
 function getparlist() {
     local pat=$1
-    ls *.xyz -1 | xargs -I{} -n1 basename {} .xyz  | awk -v RS="^" 1 | awk "/${pat}/" | sed "s/${pat}//"
+    ls *.xyz -1 | xargs -I{} -n1 basename {} .xyz  | awk -v RS="^" 1 | awk "/${pat}/" | sed "s/${pat}//" | sort | uniq
 }
 
 pat=pwell_A

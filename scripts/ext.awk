@@ -3,6 +3,11 @@
 # Get average polymer extension in X, Y, and Z directions
 # ns: number of snapshots to skip
 
+BEGIN {
+   maxx=maxy=maxz=-1e19
+   minx=miny=minz=+1e19
+}
+
 function end_of_polymer() {
     av_extx+= (maxx - minx)^2
     av_exty+= (maxy - miny)^2
@@ -18,17 +23,17 @@ function end_of_polymer() {
     npoly++
 }
 
-FNR==1 {
+FNR==1 && NR>1 {
     # to use with several files
+    printf "(ext.awk) newfile\n" > "/dev/stderr"
     npoly=0
-    end_of_polymer()
 }
 
 npoly>=ns{
     
 }
 
-NF {
+NF{
     x=$1
     y=$2
     z=$3

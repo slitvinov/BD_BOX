@@ -134,4 +134,8 @@ awk -f scripts/autocorr.awk examples/DNA_PWELL/dna_pwell.fr > \
 * tmp
 #+begin_src sh
 scp lu79buz3@supzero.lrz.de://scratch/pr95zi/lu79buz3/bd_test/DNA_PWELL/dna_pwell.vel_grad* ~/Dropbox/smac/
+scp lu79buz3@supzero.lrz.de://scratch/pr95zi/lu79buz3/bd_test/DNA_FORCE/dna_pwell.pwell* ~/Dropbox/smac/
 #+end_src
+
+#+results:
+
