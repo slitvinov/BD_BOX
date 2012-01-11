@@ -6,7 +6,7 @@ set -u
 source vars.sh
 xyz=$1
 basename=${xyz%.*}
-nskip=1
+nskip=1000
 
 printf "start processing: %s\n" ${basename}
 awk -v cm=1 -f ${bddir}/scripts/xyz2punto.awk \
