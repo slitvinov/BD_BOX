@@ -47,9 +47,15 @@ function end2endY(                         ) {
     ye = y[ib] - y[1]
 }
 
+function end2endX(                         ) {
+    xe = x[ib] - x[1]
+}
+
 function print_snap(            i) {
     if (e2e==1) {
 	print ye
+    } else if (e2eX==1) {
+	print xe
     } else if (fr==1) {
 	print xr, yr, zr
     } else if (ocm==1) {
@@ -98,6 +104,9 @@ NF==1{
 	}
 	if (e2e==1) {
 	    end2endY()
+	}
+	if (e2eX==1) {
+	    end2endX()
 	}
 	print_snap()
     }
