@@ -10,9 +10,9 @@ function getparlist() {
 }
 
 pat=pwell_A
-ls *.xyz | parallel  --verbose ./postonefile.sh {}
+ls *4e-4*.xyz | parallel  --verbose ./postonefile.sh {}
 
-for val in $(getparlist ${pat}); do
+for val in 4e-4; do
     awk -f ${bddir}/scripts/av.awk dna_pwell^proc*${pat}${val}*.fr-corr-X  > dna_pwell.${pat}${val}fr-corr-X
     awk -f ${bddir}/scripts/av.awk dna_pwell^proc*${pat}${val}*.fr-corr-Y  > dna_pwell.${pat}${val}fr-corr-Y
     awk -f ${bddir}/scripts/av.awk dna_pwell^proc*${pat}${val}*.msd  > dna_pwell.${pat}${val}msd
