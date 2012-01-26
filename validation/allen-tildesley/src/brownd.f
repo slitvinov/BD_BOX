@@ -301,12 +301,13 @@ C    *******************************************************************
 
 C   ********************************************************************
 
-        OPEN ( UNIT = CNUNIT, FILE = CNFILE, STATUS = 'UNKNOWN',
-     :         FORM = 'UNFORMATTED'                            )
+        OPEN ( UNIT = CNUNIT, FILE = CNFILE, STATUS = 'OLD',
+     :          ACTION='READ')
 
-        READ ( CNUNIT ) NN
+
+        READ ( CNUNIT, * ) NN
         IF ( NN .NE. N ) STOP 'PROBLEM WITH N IN READCN'
-        READ ( CNUNIT ) RX, RY, RZ
+        READ ( CNUNIT, * ) RX, RY, RZ
 
         CLOSE ( UNIT = CNUNIT )
 
@@ -332,12 +333,11 @@ C    *******************************************************************
         PARAMETER (  CNUNIT = 10 )
 
 C   ********************************************************************
-
         OPEN ( UNIT = CNUNIT, FILE = CNFILE, STATUS = 'OLD',
-     :         FORM = 'UNFORMATTED'                        )
+     :          ACTION='WRITE')
 
-        WRITE ( CNUNIT ) N
-        WRITE ( CNUNIT ) RX, RY, RZ
+        WRITE ( CNUNIT, * ) N
+        WRITE ( CNUNIT, * ) RX, RY, RZ
 
         CLOSE ( UNIT = CNUNIT )
 
