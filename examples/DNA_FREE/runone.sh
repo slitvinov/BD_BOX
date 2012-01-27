@@ -4,10 +4,11 @@ set -u
 set -x
 
 source vars.sh
-N=60
-iproc=$1
 
-id=dna_free
+iproc=$1
+N=$2
+
+id=dna_free~proc.${iproc}
 seed=$RANDOM
 printf "seed: %s\n" ${seed} > "/dev/stderr"
 echo -n "${id}" > "/dev/stderr"
