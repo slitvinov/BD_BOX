@@ -28,8 +28,8 @@
 
 #define EPSILON 0.000001
 
-MAKE_STR_IN(YESNO,  pwell,   0, "yes/no - switch the bounding sphere field on/off")
-MAKE_STR_IN(DOUBLE, pwell_A, 1, "the magnitude of the bounding sphere force")
+MAKE_STR_IN(YESNO,  pwell,   0, "yes/no - switch the potential well on/off")
+MAKE_STR_IN(DOUBLE, pwell_A, 1, "the magnitude of the potential well")
 
 INT pwell_ext( DOUBLE* coord, DOUBLE* F )
 {
