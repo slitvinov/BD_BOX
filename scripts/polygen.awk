@@ -18,6 +18,8 @@ BEGIN {
     R=24.5
     # initial istance between neghiboring beads
     dy=1.1*R
+    printf("(polygen.awk) dy: %e\n", dy) > "/dev/stderr"
+
     # the central charge
     Q=0.0
     # Lennard-Jones well depth
@@ -43,13 +45,13 @@ BEGIN {
     z0=0.0
 
     for (id=1; id<N+1; id++) {
-	printf("sub DNA %i %.2e %.2e %.2e %.2e %.2e %.2e %.2e %.2e\n", 
+	printf("sub DNA %i %e %e %e %e %e %e %e %e\n", 
 	       id, x0, y0, z0, sigma, Q, R, eps, mass)
 	y0+=dy
     }
 
     for (id=1; id<N; id++) {
-	printf("bond %i %i %.2e %.2e %.2e\n",
+	printf("bond %i %i %e %e %e\n",
 	       id, id+1, r0, rmax, H);
     }
 }

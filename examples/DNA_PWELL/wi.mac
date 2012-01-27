@@ -1,4 +1,4 @@
-/* time step */
+o/* time step */
 dt: 10.0;
 
 /* frequency of output */
