@@ -12,7 +12,8 @@ function getparlist() {
 pat=pwell_A
 ns=1000
 
-for val in $(getparlist ${pat}); do
+#for val in $(getparlist ${pat}); do
+for val in 4e-4; do
     res=$(awk -v ns=${ns} -f ${bddir}/scripts/ext.awk dna_pwell^proc*${pat}${val}*.punto)
     echo ${val} ${res}
 done
