@@ -2,7 +2,16 @@
    doc/BD_BOX.pdf
 */
 
+assume(r0>0);
 V: -1/2*H*rm^2*log( (rm^2-rij^2)/(rm^2-r0^2) ) - 1/2*H*rm*r0*log( (rm+rij)*(rm-r0) / (rm-rij) / (rm+r0) );
 
 /* for r0=0 */
+/* FENE */
 ratsimp(diff(limit(V, r0, 0), rij));
+
+/* for rm=+/inf */
+/* Hookean spring */
+ratsimp(diff(limit(V, rm, +inf), rij));
+
+/* full potential */
+ratsimp(diff(V, rij));
