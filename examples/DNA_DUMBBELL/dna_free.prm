@@ -1,5 +1,5 @@
 # the time step, in [ps]
-dt 5
+dt 10.0
 # temperature [K]
 T 298.15
 # viscosity [Poise]
@@ -8,11 +8,11 @@ visc 0.01
 vfactor 14.4
 # the total number of simulations steps
 #bdsteps 50000000
-bdsteps 150000000
-save_xyz_freq 10000
-save_rst_freq 10000
-save_enr_freq 10000
-save_dcd_freq 10000
+bdsteps 50000
+save_xyz_freq 50000
+save_rst_freq 50000
+save_enr_freq 50000
+save_dcd_freq 50000
 # the \alpha (Equation 7) parameter for Lennard-Jones interactions
 # scaling, typically 4.0
 alpha_lj 4.0
@@ -22,7 +22,7 @@ lj_6_term no
 # whether electrostatic interactions should be evaluated
 elec no
 # the number of attempts of repeating a particular simulation step
-move_attempts 100
+move_attempts 1000
 # the cutoff radius for Lennard-Jones interactions, default:
 # 0.0. Setting the cutoff lj to -1 results in cutoff defined for each
 # pair of the subunits as 2^{1/6}(Ri + Rj)
@@ -30,18 +30,18 @@ cutoff_lj -1
 # the scaling factor for Lennard-Jones interactions between bonded
 bond_lj_scale 1.0
 # whether to check for overlaps in the studied system after each simulations step
-check_overlap no
+check_overlap yes
 # bc string - boundary conditions to be used, either none, periodic or sphere, default: none
 bc none
 # algorithm for the trajectory generation
-algorithm igt_var
+algorithm igt_const
 rand_seed 7239847
 # the method used to evaluate hydrodynamic interactions, can be set to
 # none (a diagonal form of the diffusion tensor will be used
 # throughout the simulation)
 hydro none
 # this keyword specifies the algorithm used to create non-bonded
-# interactions lists (brute, bucket_list)
-nb_list bucket_list 
+# interactions lists
+nb_list bucket_list
 # the velocity gradient tensor
 vel_grad_tensor 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0

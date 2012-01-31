@@ -3,7 +3,6 @@
 BEGIN {
 # polymer
     kb = 1.38e-23
-    Na = 6.023e23
     Rconst = 8.3144 # J * mol^-1 * K^-1
     jInkcal = 4184
     T = 298.15
@@ -30,13 +29,12 @@ BEGIN {
     mass=1
     # the equilibrium bond length
     r0=0.0
-    # the maximum bond length
-    rmax=1.5*R         * 2.0
+    # the maximum bond length (R is doubled  LJ, see documentation)
+    rmax=1.5*R
     # the force constant
     H= 123 * (Rconst*T/jInkcal) / (rmax*rmax)
     printf("H: %f\n", H) > "/dev/stderr"
     # the hydrodynamic radius of the subunit
-    #sigma= rmax/3.0
     sigma= rmax/3.0
     printf("sigma: %f\n", sigma) > "/dev/stderr"
 
