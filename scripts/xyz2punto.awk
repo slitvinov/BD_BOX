@@ -4,6 +4,27 @@
 # http://sourceforge.net/projects/punto/
 # http://en.wikipedia.org/wiki/XYZ_file_format
 
+function end_of_polymer() {
+    # <number of atoms> line
+    next_is_comment=1
+    if (NR>1) {
+	if (ocm==1) {
+	    get_cm()
+	} else if (cm==1) {
+	    get_cm()
+	    move_cm()
+	}
+	if (fr==1) {
+	    get_fr()
+	}
+	if (e2e==1) {
+	    end2endY()
+	}
+	print_snap()
+    }
+    ib=0
+}
+
 # get centro of the mass (xc, yc, zc)
 function get_cm(                i) {
     xc=yc=zc=0
@@ -84,24 +105,7 @@ next_is_comment{
 }
 
 NF==1{
-    # <number of atoms> line
-    next_is_comment=1
-    if (NR>1) {
-	if (ocm==1) {
-	    get_cm()
-	} else if (cm==1) {
-	    get_cm()
-	    move_cm()
-	}
-	if (fr==1) {
-	    get_fr()
-	}
-	if (e2e==1) {
-	    end2endY()
-	}
-	print_snap()
-    }
-    ib=0
+    end_of_polymer()
     next
 }
 
@@ -111,4 +115,8 @@ NF==1{
     x[ib]=$2
     y[ib]=$3
     z[ib]=$4
+}
+
+END {
+    end_of_polymer()
 }
