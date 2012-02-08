@@ -1,0 +1,28 @@
+/* 1 P = 0.1 Pa.s */
+
+/* in BD_BOX */
+dt: 1e4; /* [A] */
+eta: 10.0; /* Poise */
+x0: -1.0; /* A */
+tend: 1e4*9;
+
+Tdim: 1e-10;
+Ldim: 1e-10;
+etaDim: 0.1;
+
+/* all to SI */
+
+dt_SI: dt*Tdim;
+eta_SI: eta*etaDim;
+x0_SI: x0*Ldim;
+tend_SI: tend*Tdim;
+/* k_SI: 2.6e5; */
+
+/* solve equation of motion for one atom */
+eq: 'diff(x, t) = -k_SI*x/eta_SI;
+
+eqofm: ic1(ode2(eq, x, t ), t=0, x=x0);
+posend: rhs(subst( [x0=x0_SI, t=tend_SI], eqofm));
+
+
+/* k_SI=0.300; plot "<grep DNA dna_nb1.xyz" u 0:3 w lp, -exp(-x*k_SI) */
