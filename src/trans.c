@@ -43,6 +43,7 @@ void center_coords()
     DOUBLE begin[3] = {0.0, 0.0, 0.0};
     if( size == 0 ) UNERR( "Empty str file, no particles");
     if( !bc ) return;
+    if( bc == BC_PWELL ) return;
     for( i = 0; i < 3; ++i )
     {
         m[i][0] = coord[i];
@@ -64,7 +65,7 @@ void center_coords()
     g[0] /= size;
     g[1] /= size;
     g[2] /= size;
-    if( bc == BC_BOX || bc == BC_SPHERE || bc == BC_PWELL)
+    if( bc == BC_BOX || bc == BC_SPHERE )
     {
         begin[0] = begin[1] = begin[2] = 0;
     }
