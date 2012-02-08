@@ -16,8 +16,8 @@ BEGIN {
     # this is a diameter
     R=24.5
     # initial istance between neghiboring beads
-    dy=1.1*R
-    printf("(polygen.awk) dy: %e\n", dy) > "/dev/stderr"
+    dx=1.1*R
+    printf("(polygen.awk) dx: %e\n", dx) > "/dev/stderr"
 
     # the central charge
     Q=0.0
@@ -38,14 +38,14 @@ BEGIN {
     sigma= rmax/3.0
     printf("sigma: %f\n", sigma) > "/dev/stderr"
 
-    x0=0.0
-    y0=-N/2.0*dy
+    x0=-N/2.0*dx
+    y0=0.0
     z0=0.0
 
     for (id=1; id<N+1; id++) {
 	printf("sub DNA %i %e %e %e %e %e %e %e %e\n", 
 	       id, x0, y0, z0, sigma, Q, R, eps, mass)
-	y0+=dy
+	x0+=dx
     }
 
     for (id=1; id<N; id++) {
