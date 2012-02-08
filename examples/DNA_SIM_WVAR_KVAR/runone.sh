@@ -7,11 +7,12 @@ source vars.sh
 
 # tau_60: 1.2479655e+7 [Ps]
 # 
-iproc=$1
-N=$2
-vel_grad=1.84e-5
+N=$1
+iproc=$2
+vel_grad=$3
+pwell_A=$4
 
-id=dna_free~proc${iproc}~nb${N}~vel${vel_grad}
+id=dna_free~proc${iproc}~nb${N}~vel${vel_grad}~pwell_A${pwell_A}
 seed=$RANDOM
 printf "seed: %s\n" ${seed} > "/dev/stderr"
 printf "id: %s\n" ${id} > "/dev/stderr"
@@ -22,6 +23,7 @@ ${bddir}/src/bd_box dna_free.prm \
     --out_filename=${id}.out \
     --dcd_filename=${id}.dcd \
     --rand_seed=${seed} \
-    --vel_grad_tensor="0.0 ${vel_grad} 0.0 0.0 0.0 0.0 0.0 0.0 0.0"
+    --vel_grad_tensor="0.0 ${vel_grad} 0.0 0.0 0.0 0.0 0.0 0.0 0.0" \
+    --pwell_A=${pwell_A}
 
 printf "stop: %s\n" ${id} > "/dev/stderr"

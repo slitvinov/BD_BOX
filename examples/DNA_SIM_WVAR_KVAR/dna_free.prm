@@ -45,3 +45,7 @@ hydro none
 nb_list bucket_list 
 # the velocity gradient tensor
 #vel_grad_tensor 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+
+# well potential
+bc pwell
+pwell yes
