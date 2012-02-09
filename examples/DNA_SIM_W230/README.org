@@ -11,6 +11,10 @@
 6000
 #+END_EXAMPLE
 
+dt: 3;
+nstep: 1e4;
+
+Relaxation time based on end-to-end vector correlation
 #+begin_src awk  :stdin genseq
   {
       tau=1.2479655e+7
@@ -29,3 +33,24 @@
 |  360.0 | 2.88e-05 |
 |  700.0 | 5.61e-05 |
 | 6000.0 | 4.81e-04 |
+
+Relaxation time based on Y correlation
+#+begin_src awk  :stdin genseq
+  {
+      tau=3.849774e6
+      Wi=$1
+      printf("%f %6.2e\n", Wi, Wi/tau)
+  }
+#+end_src
+
+#+RESULTS:
+|    0.5 | 1.30e-07 |
+|    6.0 | 1.56e-06 |
+|   30.0 | 7.79e-06 |
+|   60.0 | 1.56e-05 |
+|  230.0 | 5.97e-05 |
+|  240.0 | 6.23e-05 |
+|  360.0 | 9.35e-05 |
+|  700.0 | 1.82e-04 |
+| 6000.0 | 1.56e-03 |
+
