@@ -9,7 +9,7 @@ source vars.sh
 # 
 iproc=$1
 N=$2
-vel_grad=1.84e-5
+vel_grad=6.23e-05
 
 id=dna_free~proc${iproc}~nb${N}~vel${vel_grad}
 seed=$RANDOM
@@ -21,6 +21,7 @@ ${bddir}/src/bd_box dna_free.prm \
     --str_filename=${id}.str \
     --out_filename=${id}.out \
     --dcd_filename=${id}.dcd \
+    --rst_filename=${id}.rst \
     --rand_seed=${seed} \
     --vel_grad_tensor="0.0 ${vel_grad} 0.0 0.0 0.0 0.0 0.0 0.0 0.0"
 

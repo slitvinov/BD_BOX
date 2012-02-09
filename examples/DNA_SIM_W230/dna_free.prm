@@ -10,7 +10,7 @@ vfactor 14.4
 #bdsteps 50000000
 bdsteps 250000000
 save_xyz_freq 10000
-save_rst_freq 10000
+save_rst_freq 1000000
 save_enr_freq 10000
 save_dcd_freq 10000
 # the \alpha (Equation 7) parameter for Lennard-Jones interactions

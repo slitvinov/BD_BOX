@@ -18,6 +18,7 @@ ${bddir}/src/bd_box dna_free.prm \
     --str_filename=${id}.str \
     --out_filename=${id}.out \
     --dcd_filename=${id}.dcd \
+    --rst_filename=${id}.rst \
     --rand_seed=${seed} \
 
 printf "stop: %s\n" ${id} > "/dev/stderr"
