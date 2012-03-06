@@ -124,6 +124,7 @@ make install
 
 Install Windows SDK 7.0 - version 7.1 doesn't work with cuda toolkit 3.2 and doesn't contain OpenMP.
 
+
 Create directory C:\Program Files\Microsoft Visual Studio 9.0\Common7\Tools
 Copy vcvars32.bat there, from C:\Program Files\Microsoft Visual Studio 9.0\VC\bin.
 Rename vcvars32.bat to vsvars32.bat; only if does not already exist.
