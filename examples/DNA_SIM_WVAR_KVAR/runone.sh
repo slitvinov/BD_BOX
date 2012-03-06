@@ -4,9 +4,6 @@ set -u
 set -x
 
 source vars.sh
-
-# tau_60: 1.2479655e+7 [Ps]
-# 
 N=$1
 iproc=$2
 vel_grad=$3
@@ -18,7 +15,7 @@ printf "seed: %s\n" ${seed} > "/dev/stderr"
 printf "id: %s\n" ${id} > "/dev/stderr"
 awk -v N=${N} -f ${bddir}/scripts/polygen.awk > ${id}.str
 
-${bddir}/src/bd_box dna_free.prm \
+nice -n 19 ${bddir}/src/bd_box dna_free.prm \
     --str_filename=${id}.str \
     --out_filename=${id}.out \
     --dcd_filename=${id}.dcd \
