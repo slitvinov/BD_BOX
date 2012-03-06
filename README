@@ -142,4 +142,3 @@ example: nmake -f bd_box.mak nodebug=1 openmp=1 CPU=AMD64
 example: nmake -f bd_box_gpu.mak nodebug=1 openmp=1 CPU=AMD64
 
 or use VS and bd_box.sln and bd_box_gpu.sln.
-
