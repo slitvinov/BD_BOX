@@ -45,7 +45,10 @@ hydro none
 nb_list bucket_list 
 # the velocity gradient tensor
 #vel_grad_tensor 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+# --vel_grad_tensor is from command line
 
 # well potential
 bc pwell
 pwell yes
+
+# --pwell_A is from command line

@@ -11,7 +11,7 @@ iproc=$1
 N=$2
 vel_grad=6.23e-05
 
-id=dna_free~proc${iproc}~nb${N}~vel${vel_grad}
+id=dna_free~proc${iproc}~nb${N}~vel${vel_grad}-double-R0
 seed=$RANDOM
 printf "seed: %s\n" ${seed} > "/dev/stderr"
 printf "id: %s\n" ${id} > "/dev/stderr"

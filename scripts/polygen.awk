@@ -30,7 +30,7 @@ BEGIN {
     # the equilibrium bond length
     r0=0.0
     # the maximum bond length (R is doubled  LJ, see documentation)
-    rmax=1.5*R
+    rmax=1.5*R              * 2.0
     # the force constant
     H= 123 * (Rconst*T/jInkcal) / (rmax*rmax)
     printf("H: %f\n", H) > "/dev/stderr"
