@@ -1,13 +1,16 @@
 /* time step */
-dt: 10.0;
+dt: 3.0;
 
 /* frequency of output */
 frq: 10000;
 
 /* fitting parameter from simulation data */
-tau_sim: 207.658;
-
+/* tau_sim: 207.658; */
+tau_sim: 539.0;
 tau: tau_sim*dt*frq;
 
 Wi: [0, 6, 90, 240, 6000];
 gamma_dot: Wi/tau;
+
+gamma_dot_to_Wi(gdot):= gdot * tau;
+Wi_to_gamma_dot(Wi):= Wi/tau;

@@ -52,4 +52,22 @@ BEGIN {
 	printf("bond %i %i %e %e %e\n",
 	       id, id+1, r0, rmax, H);
     }
+
+    # if use angle potential
+    if (useangle) {
+	if (length(theta0)==0) {
+	    printf("(polygen.awk) theta0 must be given\n") > "/dev/stderr"
+	    exit(-1)
+	}
+	if (length(ktheta)==0) {
+	    printf("(polygen.awk) ktheta must be given\n") > "/dev/stderr"
+	    exit(-1)
+	}
+
+	for (id=1; id<N-1; id++) {
+	    printf("angle angle %i %i %i %e %e\n", 
+		   id, id+1, id+2,
+		   theta0, ktheta)
+	}
+    }
 }
